@@ -82,24 +82,32 @@
 <li><a href="https://barcode.tec-it.com/barcode.ashx?data=01032918101047751525091910IS10123664&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5">475616 KOSZYCZEK Z WARZYWAMI I SEREM EMENT</a></li>
     </ul>
 
-    <p>Your IP: <span id="ip-address"></span></p>
+   
+    <p id="location"></p>
 
     <script>
-        // Функция для получения и отображения IP-адреса пользователя
-        function getIPAddress() {
-            fetch('https://api.ipify.org?format=json')
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('ip-address').textContent = data.ip;
-                })
-                .catch(error => console.error('Failed to Obtain IP Address:', error));
+        // Функция для определения местоположения
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                document.getElementById("location").innerHTML = "Геолокация не поддерживается вашим браузером.";
+            }
+        }
+
+        // Функция для отображения местоположения
+        function showPosition(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            document.getElementById("location").innerHTML = "" + latitude + "<br>" + longitude;
         }
 
         // Вызываем функцию при загрузке страницы
-        window.onload = getIPAddress;
+        getLocation();
     </script>
 
-</body>
+
+ </body>
 <script>
     function searchLinks() {
         const input = document.getElementById('searchInput').value.toLowerCase();
