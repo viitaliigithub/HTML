@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RCHP 2024.04.30 085521</title>
+    <title>RCHP 2024.04.30 091555</title>
 <style>
     body, ul, li {
         margin: 1px;
@@ -18,7 +18,14 @@
         max-width: 100%;
         height: auto;
     }
+        #searchInput {
+            margin-bottom: 10px;
+            width: 100%; /* Увеличенная ширина поля поиска */
+            padding: 2px; /* Добавленный отступ для улучшенного внешнего вида */
+            font-size: 16px; /* Измененный размер шрифта для лучшей читаемости */
+        }
 </style>
+
 
 </head>
 
@@ -102,28 +109,28 @@
     var currentImageId = null;
 
     function showImage(event, imageId) {
-        event.preventDefault(); // Ďđĺäîňâđŕůŕĺě ďĺđĺőîä ďî ńńűëęĺ
-        var link = event.target.href; // Ďîëó÷ŕĺě URL čçîáđŕćĺíč˙ čç ńńűëęč
-        var image = document.getElementById(imageId); // Ďîëó÷ŕĺě ýëĺěĺíň čçîáđŕćĺíč˙ ďî ĺăî ID
+        event.preventDefault(); // Предотвращаем переход по ссылке
+        var link = event.target.href; // Получаем URL изображения из ссылки
+        var image = document.getElementById(imageId); // Получаем элемент изображения по его ID
 
-        // Ĺńëč óćĺ îňęđűňî čçîáđŕćĺíčĺ, çŕęđűâŕĺě ĺăî
+        // Если уже открыто изображение, закрываем его
         if (currentImageId !== null) {
             var currentImage = document.getElementById(currentImageId);
-            currentImage.classList.add('hidden'); // Ńęđűâŕĺě ňĺęóůĺĺ čçîáđŕćĺíčĺ
+            currentImage.classList.add('hidden'); // Скрываем текущее изображение
         }
 
-        image.src = link; // Óńňŕíŕâëčâŕĺě URL čçîáđŕćĺíč˙ â src ýëĺěĺíňŕ čçîáđŕćĺíč˙
-        image.classList.remove('hidden'); // Ďîęŕçűâŕĺě čçîáđŕćĺíčĺ
-        currentImageId = imageId; // Çŕďîěčíŕĺě ID îňęđűňîăî čçîáđŕćĺíč˙
+        image.src = link; // Устанавливаем URL изображения в src элемента изображения
+        image.classList.remove('hidden'); // Показываем изображение
+        currentImageId = imageId; // Запоминаем ID открытого изображения
     }
 
-    // Çŕęđűâŕĺě ňĺęóůĺĺ čçîáđŕćĺíčĺ ďđč ďîňĺđĺ ôîęóńŕ
+    // Закрываем текущее изображение при потере фокуса
     document.addEventListener('click', function(event) {
         if (!event.target.matches('a')) {
             if (currentImageId !== null) {
                 var currentImage = document.getElementById(currentImageId);
-                currentImage.classList.add('hidden'); // Ńęđűâŕĺě ňĺęóůĺĺ čçîáđŕćĺíčĺ
-                currentImageId = null; // Ńáđŕńűâŕĺě ňĺęóůĺĺ čçîáđŕćĺíčĺ
+                currentImage.classList.add('hidden'); // Скрываем текущее изображение
+                currentImageId = null; // Сбрасываем текущее изображение
             }
         }
     });
