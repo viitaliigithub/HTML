@@ -81,33 +81,7 @@
 <li><a href="https://barcode.tec-it.com/barcode.ashx?data=0108586017338753152409071007092024P&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5">358066 PIZZA Z KURCZAKIEM I GRILL. WARZ. 140G</a></li>
 <li><a href="https://barcode.tec-it.com/barcode.ashx?data=01032918101047751525091910IS10123664&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5">475616 KOSZYCZEK Z WARZYWAMI I SEREM EMENT</a></li>
     </ul>
-
-   
-    <p id="location"></p>
-
-    <script>
-        // Функция для определения местоположения
-        function getLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition);
-            } else {
-                document.getElementById("location").innerHTML = "Геолокация не поддерживается вашим браузером.";
-            }
-        }
-
-        // Функция для отображения местоположения
-        function showPosition(position) {
-            var latitude = position.coords.latitude;
-            var longitude = position.coords.longitude;
-            document.getElementById("location").innerHTML = "" + latitude + "<br>" + longitude;
-        }
-
-        // Вызываем функцию при загрузке страницы
-        getLocation();
-    </script>
-
-
- </body>
+</body>
 <script>
     function searchLinks() {
         const input = document.getElementById('searchInput').value.toLowerCase();
