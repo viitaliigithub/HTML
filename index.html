@@ -81,6 +81,24 @@
 <li><a href="https://barcode.tec-it.com/barcode.ashx?data=0108586017338753152409071007092024P&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5">358066 PIZZA Z KURCZAKIEM I GRILL. WARZ. 140G</a></li>
 <li><a href="https://barcode.tec-it.com/barcode.ashx?data=01032918101047751525091910IS10123664&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5">475616 KOSZYCZEK Z WARZYWAMI I SEREM EMENT</a></li>
     </ul>
+
+    <p>Your IP: <span id="ip-address"></span></p>
+
+    <script>
+        // Функция для получения и отображения IP-адреса пользователя
+        function getIPAddress() {
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('ip-address').textContent = data.ip;
+                })
+                .catch(error => console.error('Failed to Obtain IP Address:', error));
+        }
+
+        // Вызываем функцию при загрузке страницы
+        window.onload = getIPAddress;
+    </script>
+
 </body>
 <script>
     function searchLinks() {
