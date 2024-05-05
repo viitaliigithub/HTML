@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barcode Generator</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+    }
+    .barcode-container {
+        width: 100%;
+    }
+    .barcode {
+        width: 100%;
+        max-width: 300px; /* Ограничение максимальной ширины для удобства чтения */
+        margin-bottom: 10px;
+    }
+    .button-container {
+        margin-top: 10px;
+    }
+    #barcode-input {
+        width: 100%;
+    }
+</style>
+</head>
+<body>
+
+<h2>Barcode Generator</h2>
+
+<label for="barcode-input">Enter codes, one per line:</label><br>
+<textarea id="barcode-input" rows="10" cols="50" oninput="updateCounter()"></textarea><br>
+<span id="code-counter">0 codes entered</span><br>
+<div class="button-container">
+    <button onclick="generateBarcodes()">Generate Barcodes</button>
+</div>
+
+<div class="barcode-container" id="barcode-container">
+    <!-- Generated barcodes will be added here -->
+</div>
+
+<script>
+function generateBarcodes() {
+    var codes = document.getElementById('barcode-input').value.split('\n');
+    var container = document.getElementById('barcode-container');
+    container.innerHTML = ''; // Clear container before adding new barcodes
+
+    var index = 0;
+
+    function generateNextBarcode() {
+        if (index < codes.length) {
+            var code = codes[index].trim();
+            var imageUrl = 'https://barcode.tec-it.com/barcode.ashx?data=' + encodeURIComponent(code) + '&code=Code128&translate-esc=true&qunit=Mm&quiet=5';
+            var img = document.createElement('img');
+            img.src = imageUrl;
+            img.classList.add('barcode');
+
+            var div = document.createElement('div');
+            div.appendChild(img);
+            container.appendChild(div);
+
+            index++;
+            setTimeout(generateNextBarcode, 200); // Delay of 200 milliseconds
+        }
+    }
+
+    generateNextBarcode();
+}
+
+function updateCounter() {
+    var textarea = document.getElementById('barcode-input');
+    var codeCounter = document.getElementById('code-counter');
+    var codeLines = textarea.value.split('\n').filter(Boolean).length; // Count non-empty lines
+    codeCounter.textContent = codeLines + ' code' + (codeLines === 1 ? '' : 's') + ' entered';
+}
+</script>
+
+</body>
+</html>
