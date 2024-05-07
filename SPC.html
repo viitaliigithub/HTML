@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> SPC v.2024.05.07.223132</title>
+<style>
+    body, ul, li {
+        margin: 1px;
+        padding: 1px;
+        list-style: none;
+    }
+
+    .hidden {
+        display: none;
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+        #searchInput {
+            margin-bottom: 10px;
+            width: 99%; /* Óâĺëč÷ĺííŕ˙ řčđčíŕ ďîë˙ ďîčńęŕ */
+            padding: 2px; /* Äîáŕâëĺííűé îňńňóď äë˙ óëó÷řĺííîăî âíĺříĺăî âčäŕ */
+            font-size: 16px; /* Čçěĺíĺííűé đŕçěĺđ řđčôňŕ äë˙ ëó÷řĺé ÷čňŕĺěîńňč */
+        }
+
+    .page {
+        display: none;
+    }
+    .page.active {
+        display: block;
+    }
+    #passwordInput {
+        margin-bottom: 10px;
+        /*width: 99%;*/
+        padding: 2px;
+        font-size: 16px;
+    }
+    #loginButton {
+        margin-bottom: 10px;
+        /*width: 99%;*/
+        padding: 2px;
+        font-size: 16px;
+    }
+
+</style>
+</head>
+<body>
+
+<!-- Ńňđŕíčöŕ 1 -->
+<div class="page" id="page1">
+    <p style="text-align: center;">SPC v.2024.05.07.223132</p>
+    <p>Enter Password:</p>
+    <input type="password" id="passwordInput">
+    <button id="loginButton" onclick="checkPassword()">Enter</button>
+    <p style="text-align: center;" id="currentLocation"></p>
+</div>
+
+<!-- Ńňđŕíčöŕ 2 -->
+<div class="page" id="page2">
+    <p style="text-align: center;">SPC v.2024.05.07.223132</p>
+        <label for="searchInput"></label>
+        <input type="text" id="searchInput" placeholder="">
+    <ul id="linkList">
+ <li><a href="https://barcode.tec-it.com/barcode.ashx?data=168342&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image168342')">168342 BUŁKA Z ZIARNEM 70G</a></li><img id="image168342" class="hidden" src="">
+ <li><a href="https://barcode.tec-it.com/barcode.ashx?data=293174&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image293174')">293174 BUŁKA KAJZERKA 55 G</a></li><img id="image293174" class="hidden" src="">
+ <li><a href="https://barcode.tec-it.com/barcode.ashx?data=425681&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image425681')">425681 BUŁKA MLECZNA Z CZEKOLADĄ 50G</a></li><img id="image425681" class="hidden" src="">
+ <li><a href="https://barcode.tec-it.com/barcode.ashx?data=426516&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image426516')">426516 BUŁKA GRAHAMKA Z ZIARNAMI 75G</a></li><img id="image426516" class="hidden" src="">
+ <li><a href="https://barcode.tec-it.com/barcode.ashx?data=454639&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image454639')">454639 BUŁKA O NISKIM IG 50G</a></li><img id="image454639" class="hidden" src="">
+ <li><a href="https://barcode.tec-it.com/barcode.ashx?data=481001&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image481001')">481001 BUŁKA WYŚMIENITA 70G</a></li><img id="image481001" class="hidden" src="">
+ <li><a href="https://barcode.tec-it.com/barcode.ashx?data=428815&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image428815')">428815 BAGIETKA RUSTYKALNA 130G</a></li><img id="image428815" class="hidden" src="">
+ <li><a href="https://barcode.tec-it.com/barcode.ashx?data=352008&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image352008')">352008 DROŻDŻÓWKA Z MAKIEM 100G.</a></li><img id="image352008" class="hidden" src="">
+ <li><a href="https://barcode.tec-it.com/barcode.ashx?data=352845&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image352845')">352845 DROŻDŻÓWKA Z SEREM 130G</a></li><img id="image352845" class="hidden" src="">
+ <li><a href="https://barcode.tec-it.com/barcode.ashx?data=358997&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image358997')">358997 PĄCZEK Z NADZIENIEM KARPATKOWYM 90G</a></li><img id="image358997" class="hidden" src="">
+ <li><a href="https://barcode.tec-it.com/barcode.ashx?data=412217&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image412217')">412217 ŚLIMAK Z KREMEM O SMAKU BUDYNIOWYM 110g</a></li><img id="image412217" class="hidden" src="">
+ <li><a href="https://barcode.tec-it.com/barcode.ashx?data=423324&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image423324')">423324 PĄCZEK TWAROGOWY 50G</a></li><img id="image423324" class="hidden" src="">
+ <li><a href="https://barcode.tec-it.com/barcode.ashx?data=450214&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image450214')">450214 PĄCZEK Z JABŁKIEM 100G</a></li><img id="image450214" class="hidden" src="">
+ <li><a href="https://barcode.tec-it.com/barcode.ashx?data=502308&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image502308')">502308 PĄCZEK Z NADZIENIEM KARMELOWYM 90G</a></li><img id="image502308" class="hidden" src="">
+ <li><a href="https://barcode.tec-it.com/barcode.ashx?data=493173&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image493173')">493173 DROŻDŻÓWKA Z KRUSZONKĄ 100G</a></li><img id="image493173" class="hidden" src="">
+ <li><a href="https://barcode.tec-it.com/barcode.ashx?data=369002&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image369002')">369002 CEBULARZ 100G</a></li><img id="image369002" class="hidden" src="">
+ <li><a href="https://barcode.tec-it.com/barcode.ashx?data=381943&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image381943')">381943 BUŁECZKA CZOSNKOWA 50G</a></li><img id="image381943" class="hidden" src="">
+ <li><a href="https://barcode.tec-it.com/barcode.ashx?data=409954&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image409954')">409954 PRZEKĄSKA Z PIECZARKAMI I SEREM 100G</a></li><img id="image409954" class="hidden" src="">
+ <li><a href="https://barcode.tec-it.com/barcode.ashx?data=476328&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image476328')">476328 PALUCH Z ŻOŁTYM SEREM 80G</a></li><img id="image476328" class="hidden" src="">
+ <li><a href="https://barcode.tec-it.com/barcode.ashx?data=493361&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image493361')">493361 ŚLIMAK ZE SZPINAKIEM 100G</a></li><img id="image493361" class="hidden" src="">
+ <li><a href="https://barcode.tec-it.com/barcode.ashx?data=309429&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image309429')">309429 CHLEB MIESZANY RAZOWY KROJONY 500G</a></li><img id="image309429" class="hidden" src="">
+ <li><a href="https://barcode.tec-it.com/barcode.ashx?data=322248&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image322248')">322248 CHLEB ŻYTNI Z ZIARNAMI 400 G</a></li><img id="image322248" class="hidden" src="">
+ <li><a href="https://barcode.tec-it.com/barcode.ashx?data=352006&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image352006')">352006 CHLEB PSZENNO-ŻYTNI KROJONY 550 G</a></li><img id="image352006" class="hidden" src="">
+ <li><a href="https://barcode.tec-it.com/barcode.ashx?data=354900&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image354900')">354900 CHLEB ŻYTNI Z ŻURAWINĄ 400 G</a></li><img id="image354900" class="hidden" src="">
+ <li><a href="https://barcode.tec-it.com/barcode.ashx?data=354901&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image354901')">354901 CHLEB ŻYTNI Z DYNIĄ 400 G</a></li><img id="image354901" class="hidden" src="">
+ <li><a href="https://barcode.tec-it.com/barcode.ashx?data=367113&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image367113')">367113 CHLEB WOJSKOWY 700G</a></li><img id="image367113" class="hidden" src="">
+ <li><a href="https://barcode.tec-it.com/barcode.ashx?data=380963&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image380963')">380963 CHLEB WARSZAWSKI 500G</a></li><img id="image380963" class="hidden" src="">
+ <li><a href="https://barcode.tec-it.com/barcode.ashx?data=385091&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image385091')">385091 CHLEB ŻYTNI Z MAŚLANKĄ 400G KROJONY</a></li><img id="image385091" class="hidden" src="">
+ <li><a href="https://barcode.tec-it.com/barcode.ashx?data=410935&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image410935')">410935 CHLEB DUŻA PAJDA 900G</a></li><img id="image410935" class="hidden" src="">
+ <li><a href="https://barcode.tec-it.com/barcode.ashx?data=413896&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image413896')">413896 CHLEB ŻYTNI Z ZIARNEM OWSA 500G</a></li><img id="image413896" class="hidden" src="">
+ <li><a href="https://barcode.tec-it.com/barcode.ashx?data=413903&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image413903')">413903 CHLEB ŻYTNI Z CHRZANEM 400G</a></li><img id="image413903" class="hidden" src="">
+ <li><a href="https://barcode.tec-it.com/barcode.ashx?data=419604&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image419604')">419604 CHLEB BOGACTWO SŁONECZNIKA 500G</a></li><img id="image419604" class="hidden" src="">
+ <li><a href="https://barcode.tec-it.com/barcode.ashx?data=463553&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image463553')">463553 CHLEB SIELSKI 700G</a></li><img id="image463553" class="hidden" src="">
+ <li><a href="https://barcode.tec-it.com/barcode.ashx?data=463839&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image463839')">463839 CHLEB IG 230G</a></li><img id="image463839" class="hidden" src="">
+    </ul>
+
+</div>
+
+<script>
+    // Ôóíęöč˙ äë˙ ďđîńňîăî řčôđîâŕíč˙ ďŕđîë˙
+    function encryptPassword(password) {
+        var encryptedPassword = '';
+        for (var i = 0; i < password.length; i++) {
+            encryptedPassword += String.fromCharCode(password.charCodeAt(i) + 1); // Ďđîńňîĺ ńěĺůĺíčĺ ńčěâîëîâ íŕ îäčí řŕă âďĺđĺä
+        }
+        return encryptedPassword;
+    }
+
+    // Ôóíęöč˙ äë˙ äĺřčôđîâŕíč˙ ďŕđîë˙
+    function decryptPassword(encryptedPassword) {
+        var password = '';
+        for (var i = 0; i < encryptedPassword.length; i++) {
+            password += String.fromCharCode(encryptedPassword.charCodeAt(i) - 1); // Ďđîńňîĺ ńěĺůĺíčĺ ńčěâîëîâ íŕ îäčí řŕă íŕçŕä
+        }
+        return password;
+    }
+
+    function showPage(pageNumber) {
+        // Ńęđűňü âńĺ ńňđŕíčöű
+        var pages = document.querySelectorAll('.page');
+        pages.forEach(function(page) {
+            page.classList.remove('active');
+        });
+        
+        // Ďîęŕçŕňü âűáđŕííóţ ńňđŕíčöó
+        var selectedPage = document.getElementById('page' + pageNumber);
+        if (selectedPage) {
+            selectedPage.classList.add('active');
+        }
+    }
+
+    // Ôóíęöč˙ äë˙ îďđĺäĺëĺíč˙ ăĺîëîęŕöčč
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(checkLocation, showPasswordPage);
+        } else {
+            showPasswordPage(); // Ďĺđĺőîäčě ę ââîäó ďŕđîë˙, ĺńëč ăĺîëîęŕöč˙ íĺ ďîääĺđćčâŕĺňń˙
+        }
+    }
+
+    // Ôóíęöč˙ äë˙ ďđîâĺđęč ăĺîëîęŕöčč
+    function checkLocation(position) {
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        var distance = calculateDistance(latitude, longitude, 52.2474565, 20.8437659);
+        if (distance <= 1) {
+            showPage(2); // Ďĺđĺęëţ÷ŕĺěń˙ íŕ âňîđóţ ńňđŕíčöó, ĺńëč ďîëüçîâŕňĺëü â đŕäčóńĺ 1 ęě îň óęŕçŕííîé ăĺîëîęŕöčč
+        } else {
+            showPasswordPage(); // Ďĺđĺőîäčě ę ââîäó ďŕđîë˙, ĺńëč ďîëüçîâŕňĺëü íĺ â đŕäčóńĺ 1 ęě îň óęŕçŕííîé ăĺîëîęŕöčč
+        }
+
+        // Îňîáđŕćŕĺě ňĺęóůóţ ăĺîëîęŕöčţ
+        var currentLocationElement = document.getElementById('currentLocation');
+        if (currentLocationElement) {
+            currentLocationElement.textContent = '' + latitude + ', ' + longitude;
+        }
+    }
+
+    // Ôóíęöč˙ äë˙ ďîęŕçŕ ńňđŕíčöű ââîäŕ ďŕđîë˙
+    function showPasswordPage() {
+        showPage(1);
+    }
+
+    // Ôóíęöč˙ äë˙ âű÷čńëĺíč˙ đŕńńňî˙íč˙ ěĺćäó äâóě˙ ňî÷ęŕěč íŕ çĺěíîé ďîâĺđőíîńňč (ďđčěĺđíîĺ đŕńńňî˙íčĺ â ęčëîěĺňđŕő)
+    function calculateDistance(lat1, lon1, lat2, lon2) {
+        var R = 6371; // Đŕäčóń Çĺěëč â ęčëîěĺňđŕő
+        var dLat = deg2rad(lat2 - lat1);
+        var dLon = deg2rad(lon2 - lon1);
+        var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+                Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        var d = R * c; // Đŕńńňî˙íčĺ â ęčëîěĺňđŕő
+        return d;
+    }
+
+    function deg2rad(deg) {
+        return deg * (Math.PI / 180);
+    }
+
+    // Ôóíęöč˙ äë˙ ďđîâĺđęč ďŕđîë˙
+function checkPassword() {
+    var passwordInput = document.getElementById('passwordInput').value;
+    var encryptedPassword = encryptPassword(passwordInput);
+    if (encryptedPassword === '73319739') { // Çŕřčôđîâŕííűé ďŕđîëü
+        showPage(2); // Ďĺđĺęëţ÷ŕĺěń˙ íŕ âňîđóţ ńňđŕíčöó, ĺńëč ďŕđîëü âĺđíűé
+    } else {
+        alert('Invalid password!');
+    }
+}
+
+    // Ďđîâĺđ˙ĺě ăĺîëîęŕöčţ ďđč çŕăđóçęĺ ńňđŕíčöű
+    getLocation();
+    
+    // Ŕâňîěŕňč÷ĺńęîĺ îáíîâëĺíčĺ ńňđŕíčöű ęŕćäűĺ 15 ěčíóň
+    setInterval(function() {
+        location.reload();
+    }, 900000); // 15 ěčíóň â ěčëëčńĺęóíäŕő (15 * 60 * 1000)
+
+</script>
+
+</body>
+<script>
+    var currentImageId = null;
+
+    function showImage(event, imageId) {
+        event.preventDefault(); // Ďđĺäîňâđŕůŕĺě ďĺđĺőîä ďî ńńűëęĺ
+        var link = event.target.href; // Ďîëó÷ŕĺě URL čçîáđŕćĺíč˙ čç ńńűëęč
+        var image = document.getElementById(imageId); // Ďîëó÷ŕĺě ýëĺěĺíň čçîáđŕćĺíč˙ ďî ĺăî ID
+
+        // Ĺńëč óćĺ îňęđűňî čçîáđŕćĺíčĺ, çŕęđűâŕĺě ĺăî
+        if (currentImageId !== null) {
+            var currentImage = document.getElementById(currentImageId);
+            currentImage.classList.add('hidden'); // Ńęđűâŕĺě ňĺęóůĺĺ čçîáđŕćĺíčĺ
+        }
+
+        image.src = link; // Óńňŕíŕâëčâŕĺě URL čçîáđŕćĺíč˙ â src ýëĺěĺíňŕ čçîáđŕćĺíč˙
+        image.classList.remove('hidden'); // Ďîęŕçűâŕĺě čçîáđŕćĺíčĺ
+        currentImageId = imageId; // Çŕďîěčíŕĺě ID îňęđűňîăî čçîáđŕćĺíč˙
+    }
+
+    // Çŕęđűâŕĺě ňĺęóůĺĺ čçîáđŕćĺíčĺ ďđč ďîňĺđĺ ôîęóńŕ
+    document.addEventListener('click', function(event) {
+        if (!event.target.matches('a')) {
+            if (currentImageId !== null) {
+                var currentImage = document.getElementById(currentImageId);
+                currentImage.classList.add('hidden'); // Ńęđűâŕĺě ňĺęóůĺĺ čçîáđŕćĺíčĺ
+                currentImageId = null; // Ńáđŕńűâŕĺě ňĺęóůĺĺ čçîáđŕćĺíčĺ
+            }
+        }
+    });
+</script>
+
+<script>
+        var searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('focus', function() {
+            this.select();
+        });
+
+        searchInput.addEventListener('input', function() {
+            var searchQuery = this.value.toLowerCase();
+            var links = document.querySelectorAll('#linkList a');
+            
+            links.forEach(function(link) {
+                var linkText = link.textContent.toLowerCase();
+                var parentLi = link.parentNode;
+                
+                if (linkText.includes(searchQuery)) {
+                    parentLi.style.display = 'block';
+                } else {
+                    parentLi.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
+</html>
