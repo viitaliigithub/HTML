@@ -1,0 +1,106 @@
+<a href="#" onclick="showBarcode('307966')">307966</a> | _ PALETA DHP JEDNORAZOWA BEZZWR. W | <a href="#" onclick="showBarcode('20691363')">20691363</a> |  |  | 
+
+<a href="#" onclick="showBarcode('229788')">229788</a> | _BANER | <a href="#" onclick="showBarcode('20561826')">20561826</a> |  |  | 
+
+<a href="#" onclick="showBarcode('198645')">198645</a> | _BUT PIWO 0,5L HARNAS ZWROTNA | <a href="#" onclick="showBarcode('20479602')">20479602</a> |  |  | 
+
+<a href="#" onclick="showBarcode('196078')">196078</a> | _BUT PIWO 0,5L VICHY ZWROTNA | <a href="#" onclick="showBarcode('20468996')">20468996</a> |  |  | 
+
+<a href="#" onclick="showBarcode('351351')">351351</a> | _BUT. PIWO | <a href="#" onclick="showBarcode('20783198')">20783198</a> |  |  | 
+
+<a href="#" onclick="showBarcode('359885')">359885</a> | _BUT. PIWO HARNAS 0,5L | <a href="#" onclick="showBarcode('20795054')">20795054</a> |  |  | 
+
+<a href="#" onclick="showBarcode('359918')">359918</a> | _BUT. PIWO KASZTELAN 0,5L | <a href="#" onclick="showBarcode('20795887')">20795887</a> |  |  | 
+
+<a href="#" onclick="showBarcode('353979')">353979</a> | _BUT. PIWO LECH PREMIUM 0,5L | <a href="#" onclick="showBarcode('20787585')">20787585</a> |  |  | 
+
+<a href="#" onclick="showBarcode('415165')">415165</a> | _BUT. PIWO LECH PREMIUM 0,5L | <a href="#" onclick="showBarcode('5901359003030')">5901359003030</a> |  |  | 
+
+<a href="#" onclick="showBarcode('383249')">383249</a> | _BUT. PIWO NAMYSLOW 0,5L | <a href="#" onclick="showBarcode('20840686')">20840686</a> |  |  | 
+
+<a href="#" onclick="showBarcode('386961')">386961</a> | _BUT. PIWO NAMYSLOW 0,5L(NOWY) | <a href="#" onclick="showBarcode('20845469')">20845469</a> |  |  | 
+
+<a href="#" onclick="showBarcode('353980')">353980</a> | _BUT. PIWO TATRA 0,5L | <a href="#" onclick="showBarcode('20787592')">20787592</a> |  |  | 
+
+<a href="#" onclick="showBarcode('353981')">353981</a> | _BUT. PIWO TYSKIE 0,5L | <a href="#" onclick="showBarcode('20787608')">20787608</a> |  |  | 
+
+<a href="#" onclick="showBarcode('415437')">415437</a> | _BUT. PIWO TYSKIE GRONIE 0,5L | <a href="#" onclick="showBarcode('5901359003009')">5901359003009</a> |  |  | 
+
+<a href="#" onclick="showBarcode('383250')">383250</a> | _BUT. PIWO WARKA 0,5L | <a href="#" onclick="showBarcode('20840693')">20840693</a> |  |  | 
+
+<a href="#" onclick="showBarcode('386959')">386959</a> | _BUT. PIWO WARKA 0,5L(NOWY) | <a href="#" onclick="showBarcode('20844448')">20844448</a> |  |  | 
+
+<a href="#" onclick="showBarcode('236971')">236971</a> | _BUT. PIWO ZUBR 0,5L | <a href="#" onclick="showBarcode('20571115')">20571115</a> |  |  | 
+
+<a href="#" onclick="showBarcode('415439')">415439</a> | _BUT. PIWO ZUBR 0,5L | <a href="#" onclick="showBarcode('5901359134420')">5901359134420</a> |  |  | 
+
+<a href="#" onclick="showBarcode('266621')">266621</a> | ORZ. WŁ. CHANDL. POŁÓW. BAKAD'OR 75G | <a href="#" onclick="showBarcode('5900749360012')">5900749360012</a> | In-Out-y |  | 
+
+<a href="#" onclick="showBarcode('371023')">371023</a> | ORZECH LASKOWY PRAZONY BAKAD'OR 180G | <a href="#" onclick="showBarcode('5905617003596')">5905617003596</a> | Asortyment Regularny |  | 
+
+<a href="#" onclick="showBarcode('360934')">360934</a> | ORZECH WŁOSKI BAKAD'OR 180G | <a href="#" onclick="showBarcode('5900587042545')">5900587042545</a> | Asortyment Regularny | Suche | BAKALIE
+
+<a href="#" onclick="showBarcode('298540')">298540</a> | ORZECH WŁOSKI CHANDLER BAKAD'OR 100G | <a href="#" onclick="showBarcode('5900749442015')">5900749442015</a> |  |  | 
+
+<a href="#" onclick="showBarcode('350268')">350268</a> | ORZECH WŁOSKI CHANDLER BAKALLAND 25G | <a href="#" onclick="showBarcode('5900749340151')">5900749340151</a> | In-Out-y | Suche | BAKALIE
+
+<a href="#" onclick="showBarcode('240912')">240912</a> | ORZECHY ARACHIDOWE TOP WIADERKO 650G | <a href="#" onclick="showBarcode('5900587043641')">5900587043641</a> | In-Out-y | Suche | BAKALIE
+
+<a href="#" onclick="showBarcode('352095')">352095</a> | ORZECHY BRAZYLIJSKIE BAKAD'OR 150G | <a href="#" onclick="showBarcode('5905617002599')">5905617002599</a> | In-Out-y | Suche | BAKALIE
+
+<a href="#" onclick="showBarcode('382584')">382584</a> | ORZECHY BRAZYLIJSKIE BAKAD'OR 180G | <a href="#" onclick="showBarcode('5905617003558')">5905617003558</a> | Asortyment Regularny | Suche | BAKALIE
+
+<a href="#" onclick="showBarcode('266508')">266508</a> | ORZECHY BRAZYLIJSKIE BAKALLAND 200G | <a href="#" onclick="showBarcode('5900749020176')">5900749020176</a> | In-Out-y | Suche | BAKALIE
+
+<a href="#" onclick="showBarcode('357196')">357196</a> | ORZECHY LASKOWE 300G HELIO | <a href="#" onclick="showBarcode('5905617003046')">5905617003046</a> | In-Out-y | Suche | BAKALIE
+
+<a href="#" onclick="showBarcode('312578')">312578</a> | ORZECHY LASKOWE BIO BAKAL 100G | <a href="#" onclick="showBarcode('5900587041012')">5900587041012</a> | In-Out-y | Suche | BAKALIE
+
+<a href="#" onclick="showBarcode('290458')">290458</a> | ORZECHY LASKOWE BLANSZOWANE 100G | <a href="#" onclick="showBarcode('5900749030571')">5900749030571</a> | In-Out-y | Suche | BAKALIE
+
+<a href="#" onclick="showBarcode('198513')">198513</a> | ORZECHY LASKOWE ŁUSKANE BAKAD'OR 100G | <a href="#" onclick="showBarcode('5900749510028')">5900749510028</a> | In-Out-y | Suche | BAKALIE
+
+<a href="#" onclick="showBarcode('239958')">239958</a> | ORZECHY LASKOWE ŁUSKANE LUZ | <a href="#" onclick="showBarcode('2975960000000')">2975960000000</a> |  | Suche | BAKALIE
+
+<a href="#" onclick="showBarcode('352166')">352166</a> | ORZECHY MAKADAMIA BAKAD'OR 100G | <a href="#" onclick="showBarcode('5905617002582')">5905617002582</a> | Asortyment Regularny | Suche | BAKALIE
+
+<a href="#" onclick="showBarcode('266507')">266507</a> | ORZECHY MAKADAMIA BAKALLAND 75G | <a href="#" onclick="showBarcode('5900749010337')">5900749010337</a> | In-Out-y | Suche | BAKALIE
+
+<a href="#" onclick="showBarcode('294185')">294185</a> | ORZECHY MAKADAMIA HELIO 70G | <a href="#" onclick="showBarcode('5905617000632')">5905617000632</a> | In-Out-y | Suche | BAKALIE
+
+<a href="#" onclick="showBarcode('298541')">298541</a> | ORZECHY NERKOWCA BAKAD'OR 100G | <a href="#" onclick="showBarcode('5900749441230')">5900749441230</a> | In-Out-y | Suche | BAKALIE
+
+<a href="#" onclick="showBarcode('361090')">361090</a> | ORZECHY NERKOWCA BAKAD'OR 155G | <a href="#" onclick="showBarcode('5905617002780')">5905617002780</a> | Asortyment Regularny | Suche | BAKALIE
+
+<a href="#" onclick="showBarcode('269512')">269512</a> | ORZECHY NERKOWCA BAKAD'OR 75G | <a href="#" onclick="showBarcode('5900749440233')">5900749440233</a> | In-Out-y | Suche | BAKALIE
+
+<a href="#" onclick="showBarcode('383864')">383864</a> | ORZECHY NERKOWCA BAKAL 500 G | <a href="#" onclick="showBarcode('5900587043511')">5900587043511</a> | In-Out-y | Suche | BAKALIE
+
+<a href="#" onclick="showBarcode('359479')">359479</a> | ORZECHY NERKOWCA BAKALLINO 300G | <a href="#" onclick="showBarcode('5900587042439')">5900587042439</a> | In-Out-y | Suche | BAKALIE
+
+<a href="#" onclick="showBarcode('312486')">312486</a> | ORZECHY NERKOWCA BIO BAKAL 100G | <a href="#" onclick="showBarcode('5900587041029')">5900587041029</a> | In-Out-y | Suche | BAKALIE
+
+<a href="#" onclick="showBarcode('266367')">266367</a> | ORZECHY NERKOWCA SMAZ. SOL. PREMIUM LUZ | <a href="#" onclick="showBarcode('')"></a> | In-Out-y | Suche | BAKALIE
+
+<a href="#" onclick="showBarcode('252359')">252359</a> | ORZECHY PECAN BAKALLAND  75G | <a href="#" onclick="showBarcode('5900749010344')">5900749010344</a> | In-Out-y | Suche | BAKALIE
+
+<a href="#" onclick="showBarcode('352167')">352167</a> | ORZECHY PEKAN BAKAD'OR 150G | <a href="#" onclick="showBarcode('5905617002650')">5905617002650</a> | Asortyment Regularny | Suche | BAKALIE
+
+<a href="#" onclick="showBarcode('352168')">352168</a> | ORZECHY PINII BAKAD'OR 100G | <a href="#" onclick="showBarcode('')"></a> | Delisted | Suche | BAKALIE
+
+<a href="#" onclick="showBarcode('266506')">266506</a> | ORZECHY PINII BAKALLAND 75G | <a href="#" onclick="showBarcode('5900749010320')">5900749010320</a> | In-Out-y | Suche | BAKALIE
+
+<a href="#" onclick="showBarcode('307167')">307167</a> | ORZECHY PINII NATURA FOOD 70G | <a href="#" onclick="showBarcode('5905617002506')">5905617002506</a> | In-Out-y | Suche | BAKALIE
+
+<a href="#" onclick="showBarcode('323248')">323248</a> | ORZECHY WASABI 100G | <a href="#" onclick="showBarcode('4018077771750')">4018077771750</a> | In-Out-y | Suche | BAKALIE
+
+<a href="#" onclick="showBarcode('380358')">380358</a> | ORZECHY WŁOSKIE W ŁUPINIE BAKALLAND 500G | <a href="#" onclick="showBarcode('5900749240017')">5900749240017</a> | In-Out-y | Suche | BAKALIE
+
+<a href="#" onclick="showBarcode('240678')">240678</a> | ORZECHY WŁOSKIE W ŁUPINIE LUZ. | <a href="#" onclick="showBarcode('2976220000000')">2976220000000</a> | In-Out-y | Suche | BAKALIE
+
+<a href="#" onclick="showBarcode('382938')">382938</a> | ORZECHY ZIEMNE PRAZ KROJ BAKALLINO 200 G | <a href="#" onclick="showBarcode('5900587044037')">5900587044037</a> | In-Out-y | Suche | BAKALIE
+
+<a href="#" onclick="showBarcode('258146')">258146</a> | ORZECHY ZIEMNE W KARMELU LUZ | <a href="#" onclick="showBarcode('2961190000000')">2961190000000</a> | In-Out-y | Suche | BAKALIE
+
+<a href="#" onclick="showBarcode('427709')">427709</a> | ZELKI ODPORNOSĆ GO ACTIVE 175G | <a href="#" onclick="showBarcode('5901888022311')">5901888022311</a> | Delisted | Suche | Zdrowie
+
