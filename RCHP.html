@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RCHP v.2024.05.05.174420</title>
+<title>RCHP v.2024.05.20.163252</title>
 <style>
     body, ul, li {
         margin: 1px;
@@ -20,9 +20,9 @@
     }
         #searchInput {
             margin-bottom: 10px;
-            width: 99%; /* Óâĺëč÷ĺííŕ˙ řčđčíŕ ďîë˙ ďîčńęŕ */
-            padding: 2px; /* Äîáŕâëĺííűé îňńňóď äë˙ óëó÷řĺííîăî âíĺříĺăî âčäŕ */
-            font-size: 16px; /* Čçěĺíĺííűé đŕçěĺđ řđčôňŕ äë˙ ëó÷řĺé ÷čňŕĺěîńňč */
+            width: 99%; /* Увеличенная ширина поля поиска */
+            padding: 2px; /* Добавленный отступ для улучшенного внешнего вида */
+            font-size: 16px; /* Измененный размер шрифта для лучшей читаемости */
         }
 
     .page {
@@ -48,18 +48,18 @@
 </head>
 <body>
 
-<!-- Ńňđŕíčöŕ 1 -->
+<!-- Страница 1 -->
 <div class="page" id="page1">
-    <p style="text-align: center;">RCHP v.2024.05.05.174420</p>
+    <p style="text-align: center;">RCHP v.2024.05.20.163252</p>
     <p>Enter Password:</p>
     <input type="password" id="passwordInput">
     <button id="loginButton" onclick="checkPassword()">Enter</button>
     <p style="text-align: center;" id="currentLocation"></p>
 </div>
 
-<!-- Ńňđŕíčöŕ 2 -->
+<!-- Страница 2 -->
 <div class="page" id="page2">
-    <p style="text-align: center;">RCHP v.2024.05.05.174420</p>
+    <p style="text-align: center;">RCHP v.2024.05.20.163252</p>
         <label for="searchInput"></label>
         <input type="text" id="searchInput" placeholder="">
     <ul id="linkList">
@@ -131,6 +131,10 @@
 
 <li><a href="https://barcode.tec-it.com/barcode.ashx?data=010590205402213515240727103000103280&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image422401')">422401 BAGIETKA Z MAKA GRYCZANA 265 G</a></li><img id="image422401" class="hidden" src="">
 
+<li><a href="https://barcode.tec-it.com/barcode.ashx?data=0105901486012707152412311031122024&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image504892')">504892 BULKA SAMO ZIARNO 80 G</a></li><img id="image504892" class="hidden" src="">
+
+<li><a href="https://barcode.tec-it.com/barcode.ashx?data=01059077313834931524101310240415&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image505199')">505199 BULKA RECZNIE ZAWIJANA 90 G</a></li><img id="image505199" class="hidden" src="">
+
 <li><a href="https://barcode.tec-it.com/barcode.ashx?data=010590205401849715250213103000113908&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image362926')">362926 CHLEB FITNESS 410G</a></li><img id="image362926" class="hidden" src="">
 
 <li><a href="https://barcode.tec-it.com/barcode.ashx?data=0105907377308379152502281024048521&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image287473')">287473 CHLEB RODZINNY 410G</a></li><img id="image287473" class="hidden" src="">
@@ -158,6 +162,8 @@
 <li><a href="https://barcode.tec-it.com/barcode.ashx?data=0105901486012141152411111011112024&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image428639')">428639 CHLEB ZYTNI100% BEZ DODATKU DROZDZY 480G</a></li><img id="image428639" class="hidden" src="">
 
 <li><a href="https://barcode.tec-it.com/barcode.ashx?data=01059082300222031525021210240212&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image428409')">428409 CHLEB MULTI ZIARNO 350 G</a></li><img id="image428409" class="hidden" src="">
+
+<li><a href="https://barcode.tec-it.com/barcode.ashx?data=010590205402425215250423103000118393&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image514231')">514231 CHLEB W STYLU WLOSKIM 500 G</a></li><img id="image514231" class="hidden" src="">
 
 <li><a href="https://barcode.tec-it.com/barcode.ashx?data=01034192800605861525020310IX10869754&amp;code=Code128&amp;translate-esc=true&amp;qunit=Mm&amp;quiet=5" onclick="showImage(event, 'image362256')">362256 ROGALIK CROISSANT 60G</a></li><img id="image362256" class="hidden" src="">
 
@@ -199,80 +205,80 @@
 </div>
 
 <script>
-    // Ôóíęöč˙ äë˙ ďđîńňîăî řčôđîâŕíč˙ ďŕđîë˙
+    // Функция для простого шифрования пароля
     function encryptPassword(password) {
         var encryptedPassword = '';
         for (var i = 0; i < password.length; i++) {
-            encryptedPassword += String.fromCharCode(password.charCodeAt(i) + 1); // Ďđîńňîĺ ńěĺůĺíčĺ ńčěâîëîâ íŕ îäčí řŕă âďĺđĺä
+            encryptedPassword += String.fromCharCode(password.charCodeAt(i) + 1); // Простое смещение символов на один шаг вперед
         }
         return encryptedPassword;
     }
 
-    // Ôóíęöč˙ äë˙ äĺřčôđîâŕíč˙ ďŕđîë˙
+    // Функция для дешифрования пароля
     function decryptPassword(encryptedPassword) {
         var password = '';
         for (var i = 0; i < encryptedPassword.length; i++) {
-            password += String.fromCharCode(encryptedPassword.charCodeAt(i) - 1); // Ďđîńňîĺ ńěĺůĺíčĺ ńčěâîëîâ íŕ îäčí řŕă íŕçŕä
+            password += String.fromCharCode(encryptedPassword.charCodeAt(i) - 1); // Простое смещение символов на один шаг назад
         }
         return password;
     }
 
     function showPage(pageNumber) {
-        // Ńęđűňü âńĺ ńňđŕíčöű
+        // Скрыть все страницы
         var pages = document.querySelectorAll('.page');
         pages.forEach(function(page) {
             page.classList.remove('active');
         });
         
-        // Ďîęŕçŕňü âűáđŕííóţ ńňđŕíčöó
+        // Показать выбранную страницу
         var selectedPage = document.getElementById('page' + pageNumber);
         if (selectedPage) {
             selectedPage.classList.add('active');
         }
     }
 
-    // Ôóíęöč˙ äë˙ îďđĺäĺëĺíč˙ ăĺîëîęŕöčč
+    // Функция для определения геолокации
     function getLocation() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(checkLocation, showPasswordPage);
         } else {
-            showPasswordPage(); // Ďĺđĺőîäčě ę ââîäó ďŕđîë˙, ĺńëč ăĺîëîęŕöč˙ íĺ ďîääĺđćčâŕĺňń˙
+            showPasswordPage(); // Переходим к вводу пароля, если геолокация не поддерживается
         }
     }
 
-    // Ôóíęöč˙ äë˙ ďđîâĺđęč ăĺîëîęŕöčč
+    // Функция для проверки геолокации
     function checkLocation(position) {
         var latitude = position.coords.latitude;
         var longitude = position.coords.longitude;
         var distance = calculateDistance(latitude, longitude, 52.2474565, 20.8437659);
         if (distance <= 1) {
-            showPage(2); // Ďĺđĺęëţ÷ŕĺěń˙ íŕ âňîđóţ ńňđŕíčöó, ĺńëč ďîëüçîâŕňĺëü â đŕäčóńĺ 1 ęě îň óęŕçŕííîé ăĺîëîęŕöčč
+            showPage(2); // Переключаемся на вторую страницу, если пользователь в радиусе 1 км от указанной геолокации
         } else {
-            showPasswordPage(); // Ďĺđĺőîäčě ę ââîäó ďŕđîë˙, ĺńëč ďîëüçîâŕňĺëü íĺ â đŕäčóńĺ 1 ęě îň óęŕçŕííîé ăĺîëîęŕöčč
+            showPasswordPage(); // Переходим к вводу пароля, если пользователь не в радиусе 1 км от указанной геолокации
         }
 
-        // Îňîáđŕćŕĺě ňĺęóůóţ ăĺîëîęŕöčţ
+        // Отображаем текущую геолокацию
         var currentLocationElement = document.getElementById('currentLocation');
         if (currentLocationElement) {
             currentLocationElement.textContent = '' + latitude + ', ' + longitude;
         }
     }
 
-    // Ôóíęöč˙ äë˙ ďîęŕçŕ ńňđŕíčöű ââîäŕ ďŕđîë˙
+    // Функция для показа страницы ввода пароля
     function showPasswordPage() {
         showPage(1);
     }
 
-    // Ôóíęöč˙ äë˙ âű÷čńëĺíč˙ đŕńńňî˙íč˙ ěĺćäó äâóě˙ ňî÷ęŕěč íŕ çĺěíîé ďîâĺđőíîńňč (ďđčěĺđíîĺ đŕńńňî˙íčĺ â ęčëîěĺňđŕő)
+    // Функция для вычисления расстояния между двумя точками на земной поверхности (примерное расстояние в километрах)
     function calculateDistance(lat1, lon1, lat2, lon2) {
-        var R = 6371; // Đŕäčóń Çĺěëč â ęčëîěĺňđŕő
+        var R = 6371; // Радиус Земли в километрах
         var dLat = deg2rad(lat2 - lat1);
         var dLon = deg2rad(lon2 - lon1);
         var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
                 Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
                 Math.sin(dLon / 2) * Math.sin(dLon / 2);
         var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        var d = R * c; // Đŕńńňî˙íčĺ â ęčëîěĺňđŕő
+        var d = R * c; // Расстояние в километрах
         return d;
     }
 
@@ -280,24 +286,24 @@
         return deg * (Math.PI / 180);
     }
 
-    // Ôóíęöč˙ äë˙ ďđîâĺđęč ďŕđîë˙
+    // Функция для проверки пароля
 function checkPassword() {
     var passwordInput = document.getElementById('passwordInput').value;
     var encryptedPassword = encryptPassword(passwordInput);
-    if (encryptedPassword === '73319739') { // Çŕřčôđîâŕííűé ďŕđîëü
-        showPage(2); // Ďĺđĺęëţ÷ŕĺěń˙ íŕ âňîđóţ ńňđŕíčöó, ĺńëč ďŕđîëü âĺđíűé
+    if (encryptedPassword === '73319739') { // Зашифрованный пароль
+        showPage(2); // Переключаемся на вторую страницу, если пароль верный
     } else {
         alert('Invalid password!');
     }
 }
 
-    // Ďđîâĺđ˙ĺě ăĺîëîęŕöčţ ďđč çŕăđóçęĺ ńňđŕíčöű
+    // Проверяем геолокацию при загрузке страницы
     getLocation();
     
-    // Ŕâňîěŕňč÷ĺńęîĺ îáíîâëĺíčĺ ńňđŕíčöű ęŕćäűĺ 15 ěčíóň
+    // Автоматическое обновление страницы каждые 15 минут
     setInterval(function() {
         location.reload();
-    }, 900000); // 15 ěčíóň â ěčëëčńĺęóíäŕő (15 * 60 * 1000)
+    }, 900000); // 15 минут в миллисекундах (15 * 60 * 1000)
 
 </script>
 
@@ -306,28 +312,28 @@ function checkPassword() {
     var currentImageId = null;
 
     function showImage(event, imageId) {
-        event.preventDefault(); // Ďđĺäîňâđŕůŕĺě ďĺđĺőîä ďî ńńűëęĺ
-        var link = event.target.href; // Ďîëó÷ŕĺě URL čçîáđŕćĺíč˙ čç ńńűëęč
-        var image = document.getElementById(imageId); // Ďîëó÷ŕĺě ýëĺěĺíň čçîáđŕćĺíč˙ ďî ĺăî ID
+        event.preventDefault(); // Предотвращаем переход по ссылке
+        var link = event.target.href; // Получаем URL изображения из ссылки
+        var image = document.getElementById(imageId); // Получаем элемент изображения по его ID
 
-        // Ĺńëč óćĺ îňęđűňî čçîáđŕćĺíčĺ, çŕęđűâŕĺě ĺăî
+        // Если уже открыто изображение, закрываем его
         if (currentImageId !== null) {
             var currentImage = document.getElementById(currentImageId);
-            currentImage.classList.add('hidden'); // Ńęđűâŕĺě ňĺęóůĺĺ čçîáđŕćĺíčĺ
+            currentImage.classList.add('hidden'); // Скрываем текущее изображение
         }
 
-        image.src = link; // Óńňŕíŕâëčâŕĺě URL čçîáđŕćĺíč˙ â src ýëĺěĺíňŕ čçîáđŕćĺíč˙
-        image.classList.remove('hidden'); // Ďîęŕçűâŕĺě čçîáđŕćĺíčĺ
-        currentImageId = imageId; // Çŕďîěčíŕĺě ID îňęđűňîăî čçîáđŕćĺíč˙
+        image.src = link; // Устанавливаем URL изображения в src элемента изображения
+        image.classList.remove('hidden'); // Показываем изображение
+        currentImageId = imageId; // Запоминаем ID открытого изображения
     }
 
-    // Çŕęđűâŕĺě ňĺęóůĺĺ čçîáđŕćĺíčĺ ďđč ďîňĺđĺ ôîęóńŕ
+    // Закрываем текущее изображение при потере фокуса
     document.addEventListener('click', function(event) {
         if (!event.target.matches('a')) {
             if (currentImageId !== null) {
                 var currentImage = document.getElementById(currentImageId);
-                currentImage.classList.add('hidden'); // Ńęđűâŕĺě ňĺęóůĺĺ čçîáđŕćĺíčĺ
-                currentImageId = null; // Ńáđŕńűâŕĺě ňĺęóůĺĺ čçîáđŕćĺíčĺ
+                currentImage.classList.add('hidden'); // Скрываем текущее изображение
+                currentImageId = null; // Сбрасываем текущее изображение
             }
         }
     });
