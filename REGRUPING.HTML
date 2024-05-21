@@ -26,14 +26,26 @@
             gap: 20px; /* Расстояние между кнопками */
             margin: 20px 0; /* Отступ сверху и снизу */
         }
+        button {
+            padding: 10px 20px; /* Увеличенный размер кнопок */
+            font-size: 16px; /* Увеличенный размер текста */
+        }
         .input-group {
             margin: 20px 0;
+        }
+        .input-group input {
+            padding: 10px; /* Увеличенный размер поля ввода */
+            font-size: 16px; /* Увеличенный размер текста */
+        }
+        .input-group button {
+            padding: 10px 20px; /* Увеличенный размер кнопки */
+            font-size: 16px; /* Увеличенный размер текста */
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>REGRUPING</h1>
+        <h1>Przeglądarka Kodów Kreskowych</h1>
         <div class="barcode">
             <img id="barcodeImage" src="" alt="Kod kreskowy">
         </div>
@@ -55,6 +67,7 @@
     <script>
         // Массив с артиклами и их количеством
         const articles = [
+
 { number: "447675", quantity:" 1 SZT" },
 { number: "427720", quantity:" 6 SZT" },
 { number: "476531", quantity:" 1 SZT" },
@@ -636,7 +649,6 @@
 { number: "381803", quantity:" 20 SZT" },
 { number: "438482", quantity:" 2 OPA" },
 { number: "427217", quantity:" 9 SZT" }
-
 
         ];
 
