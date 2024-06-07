@@ -1,0 +1,23 @@
+<a href="#" onclick="showBarcode('300439')">300439</a> |  DHP Szafa Kosmetyczna pusta | <a href="#" onclick="showBarcode('')"></a> |  |  | 
+<a href="#" onclick="showBarcode('275853')">275853</a> |  DOVE DUOPACK ROLL-ON DAM/MES 2X50ML | <a href="#" onclick="showBarcode('')"></a> | In-Out-y |  | 
+<a href="#" onclick="showBarcode('276139')">276139</a> |  KOTLECIKI Z DORSZA ATLANTYCKIEGO 380G | <a href="#" onclick="showBarcode('5602312570162')">5602312570162</a> | In-Out-y |  | 
+<a href="#" onclick="showBarcode('249536')">249536</a> |  olka 51 | <a href="#" onclick="showBarcode('20594930')">20594930</a> |  |  | 
+<a href="#" onclick="showBarcode('242484')">242484</a> |  P£YN MICERALNY/DEMAK LIRENE 125ML | <a href="#" onclick="showBarcode('5900717709713')">5900717709713</a> | In-Out-y |  | 
+<a href="#" onclick="showBarcode('307966')">307966</a> | _ PALETA DHP JEDNORAZOWA BEZZWR. W | <a href="#" onclick="showBarcode('20691363')">20691363</a> |  |  | 
+<a href="#" onclick="showBarcode('229788')">229788</a> | _BANER | <a href="#" onclick="showBarcode('20561826')">20561826</a> |  |  | 
+<a href="#" onclick="showBarcode('198645')">198645</a> | _BUT PIWO 0,5L HARNAŒ ZWROTNA | <a href="#" onclick="showBarcode('20479602')">20479602</a> |  |  | 
+<a href="#" onclick="showBarcode('196078')">196078</a> | _BUT PIWO 0,5L VICHY ZWROTNA | <a href="#" onclick="showBarcode('20468996')">20468996</a> |  |  | 
+<a href="#" onclick="showBarcode('351351')">351351</a> | _BUT. PIWO | <a href="#" onclick="showBarcode('20783198')">20783198</a> |  |  | 
+<a href="#" onclick="showBarcode('359885')">359885</a> | _BUT. PIWO HARNAŒ 0,5L | <a href="#" onclick="showBarcode('20795054')">20795054</a> |  |  | 
+<a href="#" onclick="showBarcode('359918')">359918</a> | _BUT. PIWO KASZTELAN 0,5L | <a href="#" onclick="showBarcode('20795887')">20795887</a> |  |  | 
+<a href="#" onclick="showBarcode('353979')">353979</a> | _BUT. PIWO LECH PREMIUM 0,5L | <a href="#" onclick="showBarcode('20787585')">20787585</a> |  |  | 
+<a href="#" onclick="showBarcode('415165')">415165</a> | _BUT. PIWO LECH PREMIUM 0,5L | <a href="#" onclick="showBarcode('5901359003030')">5901359003030</a> |  |  | 
+<a href="#" onclick="showBarcode('383249')">383249</a> | _BUT. PIWO NAMYS£ÓW 0,5L | <a href="#" onclick="showBarcode('20840686')">20840686</a> |  |  | 
+<a href="#" onclick="showBarcode('386961')">386961</a> | _BUT. PIWO NAMYS£ÓW 0,5L(NOWY) | <a href="#" onclick="showBarcode('20845469')">20845469</a> |  |  | 
+<a href="#" onclick="showBarcode('353980')">353980</a> | _BUT. PIWO TATRA 0,5L | <a href="#" onclick="showBarcode('20787592')">20787592</a> |  |  | 
+<a href="#" onclick="showBarcode('353981')">353981</a> | _BUT. PIWO TYSKIE 0,5L | <a href="#" onclick="showBarcode('20787608')">20787608</a> |  |  | 
+<a href="#" onclick="showBarcode('415437')">415437</a> | _BUT. PIWO TYSKIE GRONIE 0,5L | <a href="#" onclick="showBarcode('5901359003009')">5901359003009</a> |  |  | 
+<a href="#" onclick="showBarcode('383250')">383250</a> | _BUT. PIWO WARKA 0,5L | <a href="#" onclick="showBarcode('20840693')">20840693</a> |  |  | 
+<a href="#" onclick="showBarcode('386959')">386959</a> | _BUT. PIWO WARKA 0,5L(NOWY) | <a href="#" onclick="showBarcode('20844448')">20844448</a> |  |  | 
+<a href="#" onclick="showBarcode('236971')">236971</a> | _BUT. PIWO ¯UBR 0,5L | <a href="#" onclick="showBarcode('20571115')">20571115</a> |  |  | 
+<a href="#" onclick="showBarcode('415439')">415439</a> | _BUT. PIWO ¯UBR 0,5L | <a href="#" onclick="showBarcode('5901359134420')">5901359134420</a> |  |  | 
