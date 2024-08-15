@@ -23,8 +23,7 @@
         /* Общий стиль для всех текстовых полей */
         .image-container .text-overlay {
             position: absolute;
-            font-family: Calibri, Arial, sans-serif;
-            font-weight: bold;
+
         }
 
         /* Индивидуальные стили для каждого текстового поля */
@@ -53,7 +52,7 @@
 
         /* Стиль для полей ввода */
         .variables-container {
-            margin-top: 20px;
+            margin-bottom: 20px;
         }
 
         .variables-container label {
@@ -62,7 +61,8 @@
             font-weight: bold;
         }
 
-        .variables-container input {
+        .variables-container input,
+        .variables-container select {
             width: calc(100% - 22px);
             padding: 10px;
             margin-bottom: 10px;
@@ -73,33 +73,8 @@
 </head>
 <body>
 
-<div class="image-container">
-    <img src="https://viitaliigithub.github.io/HTML/BOLT3.jpg" alt="Пример изображения">
-    <div class="text-overlay text1" id="text1">Поїздка з Роман 1</div>
-    <div class="text-overlay text2" id="text2">чт, 2 лют 2023 р. 2</div>
-    <div class="text-overlay text3" id="text3">Myru Avenu 95/1, Khmel’nyts’kyi 29000 3</div>
-    <div class="text-overlay text4" id="text4">21:16 4</div>
-    <div class="text-overlay text5" id="text5">Franka Street 51, Khmel’nyts’kyi 29000 5</div>
-    <div class="text-overlay text6" id="text6">21:26 6</div>
-    <div class="text-overlay text7" id="text7">Skovorody Street 67/1, Khmel’nyts’kyi 29000 7</div>
-    <div class="text-overlay text8" id="text8">21:30 8</div>
-    <div class="text-overlay text9" id="text9">Instytuts’ka Street 14, Khmel’nyts’kyi 29000 9</div>
-    <div class="text-overlay text10" id="text10">21:35 10</div>
-    <div class="text-overlay text11" id="text11">Додаткові подробиці про поїздку можна знайти у 11</div>
-    <div class="text-overlay text12" id="text12">квитанції, надісланій на твою електронну пошту 12</div>
-    <div class="text-overlay text13" id="text13">Отримай допомогу з поїздкою 13</div>
-    <div class="text-overlay text14" id="text14">Повторити 14</div>
-    <div class="text-overlay text15" id="text15">Оплата 15</div>
-    <div class="text-overlay text16" id="text16">Тариф • Bolt 16</div>
-    <div class="text-overlay text17" id="text17">111₴ 17</div>
-    <div class="text-overlay text18" id="text18">Всього 18</div>
-    <div class="text-overlay text19" id="text19">111₴ 19</div>
-    <div class="text-overlay text20" id="text20">Готівка 20</div>
-    <div class="text-overlay text21" id="text21">111₴ 21</div>
-    <div class="text-overlay text22" id="text22">Отримати чек 22</div>
-</div>
-
 <div class="variables-container">
+
     <label for="input1">Текст 1:</label>
     <input type="text" id="input1" value="Поїздка з Роман">
 
@@ -107,25 +82,25 @@
     <input type="text" id="input2" value="чт, 2 лют 2023 р.">
 
     <label for="input3">Текст 3:</label>
-    <input type="text" id="input3" value="Myru Avenu 95/1, Khmel’nyts’kyi 29000">
+    <input type="text" id="input3" value="проспект Миру 99/3, Хмельницький 29000">
 
     <label for="input4">Текст 4:</label>
     <input type="text" id="input4" value="21:16">
 
     <label for="input5">Текст 5:</label>
-    <input type="text" id="input5" value="Franka Street 51, Khmel’nyts’kyi 29000">
+    <input type="text" id="input5" value="вулиця Гайова 2, Хмельницький 29000">
 
     <label for="input6">Текст 6:</label>
     <input type="text" id="input6" value="21:26">
 
     <label for="input7">Текст 7:</label>
-    <input type="text" id="input7" value="Skovorody Street 67/1, Khmel’nyts’kyi 29000">
+    <input type="text" id="input7" value="вулиця Інститутська 12, Хмельницький 29000">
 
     <label for="input8">Текст 8:</label>
     <input type="text" id="input8" value="21:30">
 
     <label for="input9">Текст 9:</label>
-    <input type="text" id="input9" value="Instytuts’ka Street 14, Khmel’nyts’kyi 29000">
+    <input type="text" id="input9" value="вулиця Інститутська 14, Хмельницький 290000">
 
     <label for="input10">Текст 10:</label>
     <input type="text" id="input10" value="21:35">
@@ -165,6 +140,175 @@
 
     <label for="input22">Текст 22:</label>
     <input type="text" id="input22" value="Отримати чек">
+
+    <label for="fontSelect">Шрифт:</label>
+    <select id="fontSelect">
+        <option value="Calibri, Arial, sans-serif">Calibri</option>
+        <option value="Arial, sans-serif">Arial</option>
+        <option value="'Times New Roman', Times, serif">Times New Roman</option>
+        <option value="Georgia, serif">Georgia</option>
+        <option value="'Courier New', Courier, monospace">Courier New</option>
+        <option value="'Lucida Sans', sans-serif">Lucida Sans</option>
+        <option value="Academy Engraved LET">Academy Engraved LET</option>
+        <option value="Algerian">Algerian</option>
+        <option value="Amaze">Amaze</option>
+        <option value="Arial">Arial</option>
+        <option value="Arial Black">Arial Black</option>
+        <option value="Balthazar">Balthazar</option>
+        <option value="BankGothic Lt BT">BankGothic Lt BT</option>
+        <option value="Bart">Bart</option>
+        <option value="Bimini">Bimini</option>
+        <option value="Book Antiqua">Book Antiqua</option>
+        <option value="Bookman Old Style">Bookman Old Style</option>
+        <option value="Braggadocio">Braggadocio</option>
+        <option value="Britannic Bold">Britannic Bold</option>
+        <option value="Brush Script MT">Brush Script MT</option>
+        <option value="Calibri">Calibri</option>
+        <option value="Cambria">Cambria</option>
+        <option value="Candara">Candara</option>
+        <option value="Century Gothic">Century Gothic</option>
+        <option value="Century Schoolbook">Century Schoolbook</option>
+        <option value="Chasm">Chasm</option>
+        <option value="Chicago">Chicago</option>
+        <option value="Colonna MT">Colonna MT</option>
+        <option value="Comic Sans MS">Comic Sans MS</option>
+        <option value="CommercialScript BT">CommercialScript BT</option>
+        <option value="Consolas">Consolas</option>
+        <option value="Constantia">Constantia</option>
+        <option value="Coolsville">Coolsville</option>
+        <option value="Corbel">Corbel</option>
+        <option value="Courier">Courier</option>
+        <option value="Courier New">Courier New</option>
+        <option value="Cursive">Cursive</option>
+        <option value="Dayton">Dayton</option>
+        <option value="Desdemona">Desdemona</option>
+        <option value="Estrangelo Edessa">Estrangelo Edessa</option>
+        <option value="Fantasy">Fantasy</option>
+        <option value="Flat Brush">Flat Brush</option>
+        <option value="Footlight MT Light">Footlight MT Light</option>
+        <option value="Franklin Gothic Medium">Franklin Gothic Medium</option>
+        <option value="FuturaBlack BT">FuturaBlack BT</option>
+        <option value="FuturaLight BT">FuturaLight BT</option>
+        <option value="Gabriola">Gabriola</option>
+        <option value="Garamond">Garamond</option>
+        <option value="Gautami">Gautami</option>
+        <option value="Gaze">Gaze</option>
+        <option value="Geneva">Geneva</option>
+        <option value="Georgia">Georgia</option>
+        <option value="Georgia Italic">Georgia Italic</option>
+        <option value="Geotype TT">Geotype TT</option>
+        <option value="HelterSkelter">HelterSkelter</option>
+        <option value="Helvetica">Helvetica</option>
+        <option value="Herman">Herman</option>
+        <option value="Highlight LET">Highlight LET</option>
+        <option value="Impact">Impact</option>
+        <option value="Jester">Jester</option>
+        <option value="Joan">Joan</option>
+        <option value="John Handy LET">John Handy LET</option>
+        <option value="Jokerman LET">Jokerman LET</option>
+        <option value="Kelt">Kelt</option>
+        <option value="Kids">Kids</option>
+        <option value="Kino MT">Kino MT</option>
+        <option value="La Bamba LET">La Bamba LET</option>
+        <option value="Latha">Latha</option>
+        <option value="Lithograph">Lithograph</option>
+        <option value="Lucida Console">Lucida Console</option>
+        <option value="Lucida Sans Console">Lucida Sans Console</option>
+        <option value="Lucida Sans Unicode">Lucida Sans Unicode</option>
+        <option value="Map Symbols">Map Symbols</option>
+        <option value="Marlett">Marlett</option>
+        <option value="MatterOfFact">MatterOfFact</option>
+        <option value="Matisse ITC">Matisse ITC</option>
+        <option value="Matura MT Script Capitals">Matura MT Script Capitals</option>
+        <option value="Mekanik LET">Mekanik LET</option>
+        <option value="Modern">Modern</option>
+        <option value="Modern MS Sans Serif">Modern MS Sans Serif</option>
+        <option value="Monaco">Monaco</option>
+        <option value="Monospace">Monospace</option>
+        <option value="Monotype Sorts">Monotype Sorts</option>
+        <option value="MS Linedraw">MS Linedraw</option>
+        <option value="MS Sans Serif">MS Sans Serif</option>
+        <option value="MS Serif">MS Serif</option>
+        <option value="MV Boli">MV Boli</option>
+        <option value="New York">New York</option>
+        <option value="Nyala">Nyala</option>
+        <option value="OldDreadfulNo7 BT">OldDreadfulNo7 BT</option>
+        <option value="Orange LET">Orange LET</option>
+        <option value="Palatino">Palatino</option>
+        <option value="Palatino Linotype">Palatino Linotype</option>
+        <option value="Playbill">Playbill</option>
+        <option value="Pump Demi Bold LET">Pump Demi Bold LET</option>
+        <option value="PuppyLike">PuppyLike</option>
+        <option value="Roland">Roland</option>
+        <option value="Roman">Roman</option>
+        <option value="Sans-Serif">Sans-Serif</option>
+        <option value="Script">Script</option>
+        <option value="Scripts">Scripts</option>
+        <option value="Scruff LET">Scruff LET</option>
+        <option value="Segoe Print">Segoe Print</option>
+        <option value="Segoe Script">Segoe Script</option>
+        <option value="Segoe UI">Segoe UI</option>
+        <option value="Serif">Serif</option>
+        <option value="Short Hand">Short Hand</option>
+        <option value="Signs Normal">Signs Normal</option>
+        <option value="Simplex">Simplex</option>
+        <option value="Simpson">Simpson</option>
+        <option value="Small Fonts">Small Fonts</option>
+        <option value="Stylus BT">Stylus BT</option>
+        <option value="SuperFrench">SuperFrench</option>
+        <option value="Surfer">Surfer</option>
+        <option value="Swis721 BT">Swis721 BT</option>
+        <option value="Swis721 BlkOul BT">Swis721 BlkOul BT</option>
+        <option value="Symap">Symap</option>
+        <option value="Symbol">Symbol (Symbol)</option>
+        <option value="Tahoma">Tahoma</option>
+        <option value="Technic">Technic</option>
+        <option value="Tempus Sans ITC">Tempus Sans ITC</option>
+        <option value="Terk">Terk</option>
+        <option value="Times">Times</option>
+        <option value="Times New Roman">Times New Roman</option>
+        <option value="Trebuchet MS">Trebuchet MS</option>
+        <option value="Trendy">Trendy</option>
+        <option value="Txt">Txt</option>
+        <option value="Tunga">Tunga</option>
+        <option value="Verdana">Verdana</option>
+        <option value="Victorian LET">Victorian LET</option>
+        <option value="Vineta BT">Vineta BT</option>
+        <option value="Vivian">Vivian</option>
+        <option value="Webdings">Webdings (Webdings)</option>
+        <option value="Western">Western</option>
+        <option value="Westminster">Westminster</option>
+        <option value="Westwood LET">Westwood LET</option>
+        <option value="Wide Latin">Wide Latin</option>
+        <option value="Wingdings">Wingdings (Wingding)</option>
+        <option value="ZapfEllipt BT">ZapfEllipt BT</option>
+    </select>
+</div>
+
+<div class="image-container">
+    <img src="https://viitaliigithub.github.io/HTML/BOLT.jpg" alt="Пример изображения">
+    <div class="text-overlay text1" id="text1">Поїздка з Роман 1</div>
+    <div class="text-overlay text2" id="text2">чт, 2 лют 2023 р. 2</div>
+    <div class="text-overlay text3" id="text3">Myru Avenu 95/1, Khmel’nyts’kyi 29000 3</div>
+    <div class="text-overlay text4" id="text4">21:16 4</div>
+    <div class="text-overlay text5" id="text5">Franka Street 51, Khmel’nyts’kyi 29000 5</div>
+    <div class="text-overlay text6" id="text6">21:26 6</div>
+    <div class="text-overlay text7" id="text7">Skovorody Street 67/1, Khmel’nyts’kyi 29000 7</div>
+    <div class="text-overlay text8" id="text8">21:30 8</div>
+    <div class="text-overlay text9" id="text9">Instytuts’ka Street 14, Khmel’nyts’kyi 29000 9</div>
+    <div class="text-overlay text10" id="text10">21:35 10</div>
+    <div class="text-overlay text11" id="text11">Додаткові подробиці про поїздку можна знайти у 11</div>
+    <div class="text-overlay text12" id="text12">квитанції, надісланій на твою електронну пошту 12</div>
+    <div class="text-overlay text13" id="text13">Отримай допомогу з поїздкою 13</div>
+    <div class="text-overlay text14" id="text14">Повторити 14</div>
+    <div class="text-overlay text15" id="text15">Оплата 15</div>
+    <div class="text-overlay text16" id="text16">Тариф • Bolt 16</div>
+    <div class="text-overlay text17" id="text17">111₴ 17</div>
+    <div class="text-overlay text18" id="text18">Всього 18</div>
+    <div class="text-overlay text19" id="text19">111₴ 19</div>
+    <div class="text-overlay text20" id="text20">Готівка 20</div>
+    <div class="text-overlay text21" id="text21">111₴ 21</div>
+    <div class="text-overlay text22" id="text22">Отримати чек 22</div>
 </div>
 
 <script>
@@ -179,13 +323,25 @@
         }
     }
 
+    // Функция для изменения шрифта всех текстовых блоков
+    function updateFont() {
+        let selectedFont = document.getElementById('fontSelect').value;
+        document.querySelectorAll('.text-overlay').forEach(text => {
+            text.style.fontFamily = selectedFont;
+        });
+    }
+
     // Слушатель события для обновления текста при изменении значения в поле ввода
     document.querySelectorAll('.variables-container input').forEach(input => {
         input.addEventListener('input', updateText);
     });
 
-    // Инициализируем тексты при загрузке страницы
+    // Слушатель события для изменения шрифта при выборе нового шрифта
+    document.getElementById('fontSelect').addEventListener('change', updateFont);
+
+    // Инициализируем тексты и шрифт при загрузке страницы
     updateText();
+    updateFont();
 </script>
 
 </body>
