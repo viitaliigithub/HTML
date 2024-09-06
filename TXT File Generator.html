@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TXT File Generator</title>
+    <style>
+        textarea {
+            width: 100%;
+            box-sizing: border-box; /* Чтобы padding не увеличивал общую ширину */
+            overflow: hidden; /* Убираем прокрутку, чтобы текстовое поле растягивалось */
+            resize: none; /* Отключаем возможность изменения размера вручную */
+        }
+    </style>
+</head>
+<body>
+    <h2>TXT File Generator</h2>
+    <textarea id="textInput" rows="1" oninput="autoResizeTextarea()"></textarea><br><br>
+    <button onclick="saveTextAsFile()">Save TXT</button>
+
+    <script>
+        function autoResizeTextarea() {
+            const textarea = document.getElementById('textInput');
+            textarea.style.height = 'auto'; // Сбрасываем высоту
+            textarea.style.height = textarea.scrollHeight + 'px'; // Устанавливаем высоту в зависимости от содержимого
+        }
+
+        function saveTextAsFile() {
+            // Получаем введенный текст
+            const textToSave = document.getElementById('textInput').value;
+
+            // Создаем Blob с текстом
+            const textBlob = new Blob([textToSave], { type: 'text/plain' });
+
+            // Создаем ссылку для скачивания файла
+            const downloadLink = document.createElement('a');
+            downloadLink.download = 'saved_text.txt';
+            downloadLink.href = window.URL.createObjectURL(textBlob);
+            downloadLink.style.display = 'none';
+
+            // Добавляем ссылку в документ и кликаем по ней
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+
+            // Удаляем ссылку после скачивания файла
+            document.body.removeChild(downloadLink);
+        }
+    </script>
+</body>
+</html>
