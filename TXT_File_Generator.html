@@ -3,20 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TXT File Generator</title>
+    <title>Сохранение текста в файл</title>
     <style>
         textarea {
             width: 100%;
             box-sizing: border-box; /* Чтобы padding не увеличивал общую ширину */
             overflow: hidden; /* Убираем прокрутку, чтобы текстовое поле растягивалось */
             resize: none; /* Отключаем возможность изменения размера вручную */
+            font-size: 18px; /* Увеличиваем размер шрифта */
+            line-height: 1.5; /* Устанавливаем высоту строки для лучшей читаемости */
+            padding: 10px; /* Добавляем отступы внутри текстового поля */
         }
     </style>
 </head>
 <body>
-    <h2>TXT File Generator</h2>
-    <textarea id="textInput" rows="1" oninput="autoResizeTextarea()"></textarea><br><br>
-    <button onclick="saveTextAsFile()">Save TXT</button>
+    <h2>Введите текст и сохраните его в файл</h2>
+    <textarea id="textInput" rows="1" placeholder="Введите текст здесь..." oninput="autoResizeTextarea()"></textarea><br><br>
+    <button onclick="saveTextAsFile()">Сохранить текст в файл</button>
 
     <script>
         function autoResizeTextarea() {
@@ -26,15 +29,19 @@
         }
 
         function saveTextAsFile() {
-            // Получаем введенный текст
-            const textToSave = document.getElementById('textInput').value;
+            const textarea = document.getElementById('textInput');
+            const textToSave = textarea.value;
+
+            // Получаем первые 10 слов из текста для имени файла
+            const words = textToSave.split(/\s+/).filter(Boolean);
+            const fileName = words.slice(0, 10).join('_') || 'default_filename'; // Используем первые 10 слов или 'default_filename'
 
             // Создаем Blob с текстом
             const textBlob = new Blob([textToSave], { type: 'text/plain' });
 
             // Создаем ссылку для скачивания файла
             const downloadLink = document.createElement('a');
-            downloadLink.download = 'saved_text.txt';
+            downloadLink.download = `${fileName}.txt`;
             downloadLink.href = window.URL.createObjectURL(textBlob);
             downloadLink.style.display = 'none';
 
