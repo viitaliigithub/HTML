@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Сохранение текста в файл</title>
+    <title>TXT File Generator</title>
     <style>
         textarea {
             width: 100%;
@@ -13,19 +13,20 @@
             font-size: 18px; /* Увеличиваем размер шрифта */
             line-height: 1.5; /* Устанавливаем высоту строки для лучшей читаемости */
             padding: 10px; /* Добавляем отступы внутри текстового поля */
+            min-height: calc(1.5em * 5 + 20px); /* Минимальная высота для отображения 5 строк + padding */
         }
     </style>
 </head>
 <body>
-    <h2>Введите текст и сохраните его в файл</h2>
-    <textarea id="textInput" rows="1" placeholder="Введите текст здесь..." oninput="autoResizeTextarea()"></textarea><br><br>
-    <button onclick="saveTextAsFile()">Сохранить текст в файл</button>
+    <h2>TXT File Generator</h2>
+    <textarea id="textInput" rows="5" oninput="autoResizeTextarea()"></textarea><br><br>
+    <button onclick="saveTextAsFile()">Save TXT</button>
 
     <script>
         function autoResizeTextarea() {
             const textarea = document.getElementById('textInput');
             textarea.style.height = 'auto'; // Сбрасываем высоту
-            textarea.style.height = textarea.scrollHeight + 'px'; // Устанавливаем высоту в зависимости от содержимого
+            textarea.style.height = Math.max(textarea.scrollHeight, parseInt(getComputedStyle(textarea).minHeight)) + 'px'; // Устанавливаем высоту в зависимости от содержимого, но не меньше минимальной
         }
 
         function saveTextAsFile() {
