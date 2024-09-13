@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Сканер QR-кодов с обработкой изображений</title>
+    <title>Сканер QR-кодов с копированием текста</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -31,12 +31,18 @@
         canvas {
             display: none;
         }
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
     </style>
 </head>
 <body>
-    <h1>Сканер QR-кодов с обработкой изображений</h1>
+    <h1>Сканер QR-кодов с копированием текста</h1>
     <video id="video" width="320" height="240" autoplay></video>
     <div id="output">QR-код будет отображаться здесь</div>
+    <button id="copy-button">Копировать текст</button>
     <input type="file" id="file" accept="image/*">
 
     <canvas id="canvas"></canvas>
@@ -45,8 +51,11 @@
     <script>
         const video = document.getElementById('video');
         const output = document.getElementById('output');
-        const canvas = document.getElementById('canvas');
+        const copyButton = document.getElementById('copy-button');
+        const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d');
+
+        let qrText = '';
 
         function startCamera() {
             navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
@@ -72,7 +81,8 @@
                 const qrCode = jsQR(imageData.data, canvas.width, canvas.height);
                 
                 if (qrCode) {
-                    output.textContent = qrCode.data;
+                    qrText = qrCode.data;
+                    output.textContent = qrText;
                 } else {
                     output.textContent = 'QR-код не найден. Попробуйте ещё раз.';
                 }
@@ -95,7 +105,8 @@
                     const qrCode = jsQR(imageData.data, canvas.width, canvas.height);
                     
                     if (qrCode) {
-                        output.textContent = qrCode.data;
+                        qrText = qrCode.data;
+                        output.textContent = qrText;
                     } else {
                         output.textContent = 'QR-код не найден или не удалось прочитать.';
                     }
@@ -109,6 +120,21 @@
             const file = event.target.files[0];
             if (file) {
                 handleFile(file);
+            }
+        });
+
+        copyButton.addEventListener('click', function() {
+            if (qrText) {
+                navigator.clipboard.writeText(qrText)
+                    .then(() => {
+                        alert('Текст скопирован в буфер обмена!');
+                    })
+                    .catch(err => {
+                        console.error('Ошибка при копировании текста:', err);
+                        alert('Не удалось скопировать текст.');
+                    });
+            } else {
+                alert('Нет текста для копирования.');
             }
         });
 
