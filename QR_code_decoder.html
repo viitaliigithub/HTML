@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Дешифратор QR-кодов</title>
+    <title>Сканер QR-кодов с обработкой изображений</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -14,6 +14,9 @@
             height: 100vh;
             margin: 0;
         }
+        video {
+            border: 1px solid #ddd;
+        }
         #output {
             margin-top: 20px;
             white-space: pre-wrap;
@@ -22,66 +25,94 @@
             width: 300px;
             background-color: #f9f9f9;
         }
+        input[type="file"] {
+            margin-top: 20px;
+        }
         canvas {
             display: none;
         }
     </style>
 </head>
 <body>
-    <h1>Дешифратор QR-кодов</h1>
-    <input type="file" id="file" accept="image/*" style="margin-bottom: 10px;">
-    <div id="output">Здесь будет отображаться результат</div>
+    <h1>Сканер QR-кодов с обработкой изображений</h1>
+    <video id="video" width="320" height="240" autoplay></video>
+    <div id="output">QR-код будет отображаться здесь</div>
+    <input type="file" id="file" accept="image/*">
 
     <canvas id="canvas"></canvas>
 
     <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.js"></script>
     <script>
+        const video = document.getElementById('video');
+        const output = document.getElementById('output');
+        const canvas = document.getElementById('canvas');
+        const context = canvas.getContext('2d');
+
+        function startCamera() {
+            navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
+                .then(stream => {
+                    video.srcObject = stream;
+                    video.setAttribute('playsinline', true);
+                    video.play();
+                    requestAnimationFrame(scanQRCode);
+                })
+                .catch(error => {
+                    console.error('Ошибка доступа к камере:', error);
+                    output.textContent = 'Не удалось получить доступ к камере.';
+                });
+        }
+
+        function scanQRCode() {
+            if (video.readyState === video.HAVE_ENOUGH_DATA) {
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                context.drawImage(video, 0, 0, canvas.width, canvas.height);
+                
+                const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+                const qrCode = jsQR(imageData.data, canvas.width, canvas.height);
+                
+                if (qrCode) {
+                    output.textContent = qrCode.data;
+                } else {
+                    output.textContent = 'QR-код не найден. Попробуйте ещё раз.';
+                }
+            }
+            requestAnimationFrame(scanQRCode);
+        }
+
+        function handleFile(file) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                const img = new Image();
+                img.onload = function() {
+                    // Масштабируем изображение до более управляемого размера
+                    const scale = 0.5; // Уменьшение размера изображения
+                    canvas.width = img.width * scale;
+                    canvas.height = img.height * scale;
+                    context.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    
+                    const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+                    const qrCode = jsQR(imageData.data, canvas.width, canvas.height);
+                    
+                    if (qrCode) {
+                        output.textContent = qrCode.data;
+                    } else {
+                        output.textContent = 'QR-код не найден или не удалось прочитать.';
+                    }
+                };
+                img.src = reader.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
         document.getElementById('file').addEventListener('change', function(event) {
             const file = event.target.files[0];
             if (file) {
-                const reader = new FileReader();
-                reader.onload = function() {
-                    const img = new Image();
-                    img.onload = function() {
-                        const canvas = document.getElementById('canvas');
-                        const context = canvas.getContext('2d');
-                        canvas.width = img.width;
-                        canvas.height = img.height;
-                        context.drawImage(img, 0, 0, canvas.width, canvas.height);
-
-                        // Попробуйте улучшить качество изображения
-                        const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-                        // Преобразование в градации серого может помочь
-                        const grayData = convertToGrayscale(imageData);
-                        const qrCode = jsQR(grayData.data, canvas.width, canvas.height);
-
-                        const output = document.getElementById('output');
-                        if (qrCode) {
-                            output.textContent = qrCode.data;
-                        } else {
-                            output.textContent = 'QR-код не найден или не удалось прочитать.';
-                        }
-                    };
-                    img.src = reader.result;
-                };
-                reader.readAsDataURL(file);
+                handleFile(file);
             }
         });
 
-        function convertToGrayscale(imageData) {
-            const grayData = new Uint8ClampedArray(imageData.width * imageData.height * 4);
-            for (let i = 0; i < imageData.data.length; i += 4) {
-                const r = imageData.data[i];
-                const g = imageData.data[i + 1];
-                const b = imageData.data[i + 2];
-                const gray = (r + g + b) / 3;
-                grayData[i] = gray;
-                grayData[i + 1] = gray;
-                grayData[i + 2] = gray;
-                grayData[i + 3] = imageData.data[i + 3]; // альфа-канал
-            }
-            return new ImageData(grayData, imageData.width, imageData.height);
-        }
+        startCamera();
     </script>
 </body>
 </html>
