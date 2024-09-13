@@ -49,8 +49,11 @@
                         canvas.height = img.height;
                         context.drawImage(img, 0, 0, canvas.width, canvas.height);
 
+                        // Попробуйте улучшить качество изображения
                         const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-                        const qrCode = jsQR(imageData.data, canvas.width, canvas.height);
+                        // Преобразование в градации серого может помочь
+                        const grayData = convertToGrayscale(imageData);
+                        const qrCode = jsQR(grayData.data, canvas.width, canvas.height);
 
                         const output = document.getElementById('output');
                         if (qrCode) {
@@ -64,6 +67,21 @@
                 reader.readAsDataURL(file);
             }
         });
+
+        function convertToGrayscale(imageData) {
+            const grayData = new Uint8ClampedArray(imageData.width * imageData.height * 4);
+            for (let i = 0; i < imageData.data.length; i += 4) {
+                const r = imageData.data[i];
+                const g = imageData.data[i + 1];
+                const b = imageData.data[i + 2];
+                const gray = (r + g + b) / 3;
+                grayData[i] = gray;
+                grayData[i + 1] = gray;
+                grayData[i + 2] = gray;
+                grayData[i + 3] = imageData.data[i + 3]; // альфа-канал
+            }
+            return new ImageData(grayData, imageData.width, imageData.height);
+        }
     </script>
 </body>
 </html>
