@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+        #qr-output {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            width: 360px;
+            height: 360px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f9f9f9;
+        }
+        button {
+            margin-top: 10px;
+            padding: 12px;
+            font-size: 16px;
+            width: 360px;
+        }
+        textarea {
+            width: 360px;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+            height: 100px;
+        }
+        #line-counter {
+            margin-top: 5px;
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>QR Code Generator</h1>
+    <textarea id="qr-input" placeholder="Enter text"></textarea>
+    <div id="line-counter">Lines: 0</div>
+    <button id="generate-button">Generate QR Code</button>
+    <div id="qr-output">QR code will appear here</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+    <script>
+        const qrInput = document.getElementById('qr-input');
+        const qrOutput = document.getElementById('qr-output');
+        const generateButton = document.getElementById('generate-button');
+        const lineCounter = document.getElementById('line-counter');
+
+        // Function to count lines in textarea
+        function countLines(text) {
+            return text.split('\n').length;
+        }
+
+        // Update line count when user types
+        qrInput.addEventListener('input', function() {
+            const lineCount = countLines(qrInput.value);
+            lineCounter.textContent = `Lines: ${lineCount}`;
+        });
+
+        generateButton.addEventListener('click', function() {
+            const inputText = qrInput.value;
+            if (inputText) {
+                qrOutput.innerHTML = '';
+                QRCode.toCanvas(inputText, { width: 360, margin: 2 }, function (error, canvas) {
+                    if (error) {
+                        qrOutput.textContent = 'Error generating QR code';
+                        console.error(error);
+                    } else {
+                        qrOutput.appendChild(canvas);
+                    }
+                });
+            } else {
+                qrOutput.textContent = 'Please enter some text.';
+            }
+        });
+
+    </script>
+</body>
+</html>
