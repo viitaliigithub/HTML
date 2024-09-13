@@ -28,7 +28,12 @@
             margin-top: 10px;
             padding: 12px;
             font-size: 16px;
-            width: 300px; /* Matching the width of other elements */
+            width: 300px;
+        }
+        #line-counter {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #555;
         }
         canvas {
             display: none;
@@ -40,6 +45,7 @@
     <video id="video" width="320" height="240" autoplay></video>
     <button id="copy-button">Copy Text</button>
     <div id="output">QR code text will appear here</div>
+    <div id="line-counter">Lines: 0</div>
 
     <canvas id="canvas"></canvas>
 
@@ -48,10 +54,16 @@
         const video = document.getElementById('video');
         const output = document.getElementById('output');
         const copyButton = document.getElementById('copy-button');
+        const lineCounter = document.getElementById('line-counter');
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d');
 
         let qrText = '';
+
+        function updateLineCounter(text) {
+            const lines = text.split(/\r\n|\r|\n/).length;
+            lineCounter.textContent = `Lines: ${lines}`;
+        }
 
         function startCamera() {
             navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
@@ -76,11 +88,10 @@
                 const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
                 const qrCode = jsQR(imageData.data, canvas.width, canvas.height);
                 
-                if (qrCode) {
+                if (qrCode && qrCode.data !== qrText) {
                     qrText = qrCode.data;
                     output.textContent = qrText;
-                } else {
-                    output.textContent = 'QR code not found. Please try again.';
+                    updateLineCounter(qrText);
                 }
             }
             requestAnimationFrame(scanQRCode);
