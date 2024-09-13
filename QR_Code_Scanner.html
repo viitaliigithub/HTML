@@ -37,7 +37,7 @@
 </head>
 <body>
     <h1>QR Code Scanner</h1>
-    <video id="video" width="1280" height="720" autoplay></video>
+    <video id="video" width="640" height="480" autoplay></video> <!-- Increased resolution -->
     <button id="copy-button">Copy Text</button>
     <div id="output">QR code text will appear here</div>
 
@@ -54,8 +54,7 @@
         let qrText = '';
 
         function startCamera() {
-            // Set camera resolution to 1280x720 (HD)
-            navigator.mediaDevices.getUserMedia({ video: { width: 1280, height: 720, facingMode: 'environment' } })
+            navigator.mediaDevices.getUserMedia({ video: { width: { ideal: 640 }, height: { ideal: 480 }, facingMode: 'environment' } }) // Increased resolution
                 .then(stream => {
                     video.srcObject = stream;
                     video.setAttribute('playsinline', true);
