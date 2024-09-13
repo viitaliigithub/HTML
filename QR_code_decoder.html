@@ -25,42 +25,56 @@
         canvas {
             display: none;
         }
+        video {
+            display: none;
+        }
     </style>
 </head>
 <body>
     <h1>Дешифратор QR-кодов</h1>
+    
+    <!-- Выбор файла -->
     <input type="file" id="file" accept="image/*" style="margin-bottom: 10px;">
-    <div id="output">Здесь будет отображаться результат</div>
-
+    <button id="capture">Сделать снимок</button>
+    
+    <!-- Видео для отображения с камеры -->
+    <video id="video" width="640" height="480" autoplay></video>
     <canvas id="canvas"></canvas>
+    
+    <div id="output">Здесь будет отображаться результат</div>
 
     <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.js"></script>
     <script>
-        document.getElementById('file').addEventListener('change', function(event) {
+        const fileInput = document.getElementById('file');
+        const captureButton = document.getElementById('capture');
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const context = canvas.getContext('2d');
+        const output = document.getElementById('output');
+
+        // Функция для обработки QR-кода
+        function processQRCode(imageData) {
+            const qrCode = jsQR(imageData.data, canvas.width, canvas.height);
+            if (qrCode) {
+                output.textContent = qrCode.data;
+            } else {
+                output.textContent = 'QR-код не найден или не удалось прочитать.';
+            }
+        }
+
+        // Обработка файла
+        fileInput.addEventListener('change', function(event) {
             const file = event.target.files[0];
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function() {
                     const img = new Image();
                     img.onload = function() {
-                        const canvas = document.getElementById('canvas');
-                        const context = canvas.getContext('2d');
                         canvas.width = img.width;
                         canvas.height = img.height;
                         context.drawImage(img, 0, 0, canvas.width, canvas.height);
-
-                        // Попробуйте улучшить качество изображения
                         const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-                        // Преобразование в градации серого может помочь
-                        const grayData = convertToGrayscale(imageData);
-                        const qrCode = jsQR(grayData.data, canvas.width, canvas.height);
-
-                        const output = document.getElementById('output');
-                        if (qrCode) {
-                            output.textContent = qrCode.data;
-                        } else {
-                            output.textContent = 'QR-код не найден или не удалось прочитать.';
-                        }
+                        processQRCode(imageData);
                     };
                     img.src = reader.result;
                 };
@@ -68,20 +82,33 @@
             }
         });
 
-        function convertToGrayscale(imageData) {
-            const grayData = new Uint8ClampedArray(imageData.width * imageData.height * 4);
-            for (let i = 0; i < imageData.data.length; i += 4) {
-                const r = imageData.data[i];
-                const g = imageData.data[i + 1];
-                const b = imageData.data[i + 2];
-                const gray = (r + g + b) / 3;
-                grayData[i] = gray;
-                grayData[i + 1] = gray;
-                grayData[i + 2] = gray;
-                grayData[i + 3] = imageData.data[i + 3]; // альфа-канал
-            }
-            return new ImageData(grayData, imageData.width, imageData.height);
+        // Запуск камеры
+        function startCamera() {
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(stream => {
+                    video.srcObject = stream;
+                    video.play();
+                })
+                .catch(err => {
+                    console.error('Ошибка доступа к камере:', err);
+                });
         }
+
+        // Снимок с камеры
+        captureButton.addEventListener('click', function() {
+            if (video.srcObject) {
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                context.drawImage(video, 0, 0);
+                const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+                processQRCode(imageData);
+            } else {
+                alert('Камера не запущена. Пожалуйста, загрузите изображение или запустите камеру.');
+            }
+        });
+
+        // Запуск камеры при загрузке страницы
+        window.onload = startCamera;
     </script>
 </body>
 </html>
