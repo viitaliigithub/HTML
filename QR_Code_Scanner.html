@@ -5,19 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QR Code Scanner</title>
     <style>
-            body, ul, li {
-        margin: 1px;
-        padding: 1px;
-        list-style: none;
-    }
-//        body {
-//            font-family: Arial, sans-serif;
-//            display: flex;
-//            flex-direction: column;
-//            align-items: center;
-//            margin: 0;
-//            padding: 20px;
-//        }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
         video {
             border: 1px solid #ddd;
         }
@@ -26,14 +21,14 @@
             white-space: pre-wrap;
             border: 1px solid #ddd;
             padding: 10px;
-            width: 400px;
+            width: 300px;
             background-color: #f9f9f9;
         }
         button {
             margin-top: 10px;
             padding: 12px;
             font-size: 16px;
-            width: 400px;
+            width: 300px;
         }
         #line-counter {
             margin-top: 10px;
@@ -47,10 +42,10 @@
 </head>
 <body>
     <h1>QR Code Scanner</h1>
-    <video id="video" width="360" height="360" autoplay></video>
+    <video id="video" width="300" height="300" autoplay></video>
     <button id="copy-button">Copy Text</button>
-    <div id="line-counter">Lines: 0</div>
     <div id="output">QR code text will appear here</div>
+    <div id="line-counter">Lines: 0</div>
 
     <canvas id="canvas"></canvas>
 
