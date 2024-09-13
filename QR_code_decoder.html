@@ -128,15 +128,9 @@
         copyButton.addEventListener('click', function() {
             if (qrText) {
                 navigator.clipboard.writeText(qrText)
-                    .then(() => {
-                        alert('Текст скопирован в буфер обмена!');
-                    })
                     .catch(err => {
                         console.error('Ошибка при копировании текста:', err);
-                        alert('Не удалось скопировать текст.');
                     });
-            } else {
-                alert('Нет текста для копирования.');
             }
         });
 
