@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RCHP v.2024.11.02.223215</title>
+<title>RCHP v.2024.11.02.224522</title>
 <script src="https://viitaliigithub.github.io/HTML/JsBarcode.all.min.js"></script>
 <style>
     body, ul, li {
@@ -43,7 +43,7 @@
 
 <!-- Страница 1 -->
 <div class="page" id="page1">
-    <p style="text-align: center;">RCHP v.2024.11.02.223215</p>
+    <p style="text-align: center;">RCHP v.2024.11.02.224522</p>
     <p>Enter Password:</p>
     <input type="password" id="passwordInput">
     <button id="loginButton" onclick="checkPassword()">Enter</button>
@@ -52,7 +52,7 @@
 
 <!-- Страница 2 -->
 <div class="page" id="page2">
-    <p style="text-align: center;">RCHP v.2024.11.02.223215</p>
+    <p style="text-align: center;">RCHP v.2024.11.02.224522</p>
     <input type="text" id="searchInput" placeholder="">
     <ul id="linkList">
 <li><a href="#" onclick="showImage(event, 'image260623', '0105907377306139152510311024292503')">260623 BULKA PORANNA 65 G</a><div id="comment260623" class="hidden" style="color: #ff0000;">Exp. date: 2025.10.31</div><img id="image260623" class="hidden" src=""></li>
@@ -155,15 +155,15 @@ function showImage(event, imageId, barcodeData) {
     commentDiv.classList.remove('hidden'); // Показываем комментарий
     currentImageId = imageId; // Запоминаем ID открытого изображения
 
-    // Проверка на срок действия
-    if (commentDiv.textContent.includes('Exp. date:')) {
-        var expDateStr = commentDiv.textContent.match(/Exp\. date:\s*(\d{4}\.\d{2}\.\d{2})/);
-        if (expDateStr) {
-            var expDate = new Date(expDateStr[1]);
-            var currentDate = new Date();
-            if (expDate < currentDate) {
-                alert("Termin waznosci minal! Prosze zeskanowac kod z kartonika!");
-            }
+    // Проверка на срок годности
+    var commentText = commentDiv.textContent;
+    var expDateMatch = commentText.match(/Exp\. date:\s*(\d{4}\.\d{2}\.\d{2})/);
+    if (expDateMatch) {
+        var expDate = new Date(expDateMatch[1]);
+        var currentDate = new Date(); // Получаем текущую дату
+
+        if (expDate < currentDate) {
+            alert("Termin waznosci minal! Prosze zeskanowac kod z kartonika!");
         }
     }
 }
