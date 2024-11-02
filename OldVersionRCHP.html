@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RCHP v.2024.11.02.224522</title>
+<title>RCHP v.2024.11.02.225827</title>
 <script src="https://viitaliigithub.github.io/HTML/JsBarcode.all.min.js"></script>
 <style>
     body, ul, li {
@@ -41,18 +41,18 @@
 </head>
 <body>
 
-<!-- Страница 1 -->
+<!-- Ńňđŕíčöŕ 1 -->
 <div class="page" id="page1">
-    <p style="text-align: center;">RCHP v.2024.11.02.224522</p>
+    <p style="text-align: center;">RCHP v.2024.11.02.225827</p>
     <p>Enter Password:</p>
     <input type="password" id="passwordInput">
     <button id="loginButton" onclick="checkPassword()">Enter</button>
     <p style="text-align: center;" id="currentLocation"></p>
 </div>
 
-<!-- Страница 2 -->
+<!-- Ńňđŕíčöŕ 2 -->
 <div class="page" id="page2">
-    <p style="text-align: center;">RCHP v.2024.11.02.224522</p>
+    <p style="text-align: center;">RCHP v.2024.11.02.225827</p>
     <input type="text" id="searchInput" placeholder="">
     <ul id="linkList">
 <li><a href="#" onclick="showImage(event, 'image260623', '0105907377306139152510311024292503')">260623 BULKA PORANNA 65 G</a><div id="comment260623" class="hidden" style="color: #ff0000;">Exp. date: 2025.10.31</div><img id="image260623" class="hidden" src=""></li>
@@ -129,20 +129,37 @@
 </div>
 
 <script>
-    var currentImageId = null;
+var currentImageId = null;
+var currentDate = null; // Ďĺđĺěĺííŕ˙ äë˙ őđŕíĺíč˙ ňĺęóůĺé äŕňű
+
+// Ôóíęöč˙ äë˙ ďîëó÷ĺíč˙ ňĺęóůĺé äŕňű
+function fetchCurrentDate() {
+    fetch('http://worldtimeapi.org/api/ip')
+        .then(response => response.json())
+        .then(data => {
+            currentDate = new Date(data.datetime); // Ďîëó÷ŕĺě ňĺęóůóţ äŕňó
+        })
+        .catch(error => {
+            console.error('Error fetching current date:', error);
+            currentDate = new Date(); // Ĺńëč íĺ óäŕëîńü ďîëó÷čňü äŕňó, čńďîëüçóĺě ëîęŕëüíóţ äŕňó
+        });
+}
+
+// Âűçűâŕĺě ôóíęöčţ äë˙ ďîëó÷ĺíč˙ ňĺęóůĺé äŕňű
+fetchCurrentDate();
 
 function showImage(event, imageId, barcodeData) {
-    event.preventDefault(); // Предотвращаем переход по ссылке
+    event.preventDefault(); // Ďđĺäîňâđŕůŕĺě ďĺđĺőîä ďî ńńűëęĺ
 
-    // Если уже открыто изображение, скрываем его и комментарий
+    // Ĺńëč óćĺ îňęđűňî čçîáđŕćĺíčĺ, ńęđűâŕĺě ĺăî č ęîěěĺíňŕđčé
     if (currentImageId !== null && currentImageId !== imageId) {
         var currentImage = document.getElementById(currentImageId);
-        currentImage.classList.add('hidden'); // Скрываем текущее изображение
+        currentImage.classList.add('hidden'); // Ńęđűâŕĺě ňĺęóůĺĺ čçîáđŕćĺíčĺ
         var currentComment = document.getElementById('comment' + currentImageId.replace('image', ''));
-        currentComment.classList.add('hidden'); // Скрываем текущий комментарий
+        currentComment.classList.add('hidden'); // Ńęđűâŕĺě ňĺęóůčé ęîěěĺíňŕđčé
     }
 
-    var image = document.getElementById(imageId); // Получаем элемент изображения
+    var image = document.getElementById(imageId); // Ďîëó÷ŕĺě ýëĺěĺíň čçîáđŕćĺíč˙
     JsBarcode(image, barcodeData, {
         format: "CODE128",
         displayValue: true,
@@ -150,35 +167,34 @@ function showImage(event, imageId, barcodeData) {
         margin: 5
     });
 
-    image.classList.remove('hidden'); // Показываем изображение
+    image.classList.remove('hidden'); // Ďîęŕçűâŕĺě čçîáđŕćĺíčĺ
     var commentDiv = document.getElementById('comment' + imageId.replace('image', ''));
-    commentDiv.classList.remove('hidden'); // Показываем комментарий
-    currentImageId = imageId; // Запоминаем ID открытого изображения
+    commentDiv.classList.remove('hidden'); // Ďîęŕçűâŕĺě ęîěěĺíňŕđčé
+    currentImageId = imageId; // Çŕďîěčíŕĺě ID îňęđűňîăî čçîáđŕćĺíč˙
 
-    // Проверка на срок годности
-    var commentText = commentDiv.textContent;
-    var expDateMatch = commentText.match(/Exp\. date:\s*(\d{4}\.\d{2}\.\d{2})/);
-    if (expDateMatch) {
-        var expDate = new Date(expDateMatch[1]);
-        var currentDate = new Date(); // Получаем текущую дату
-
-        if (expDate < currentDate) {
-            alert("Termin waznosci minal! Prosze zeskanowac kod z kartonika!");
+    // Ďđîâĺđęŕ íŕ ńđîę äĺéńňâč˙
+    if (commentDiv.textContent.includes('Exp. date:')) {
+        var expDateStr = commentDiv.textContent.match(/Exp\. date:\s*(\d{4}\.\d{2}\.\d{2})/);
+        if (expDateStr) {
+            var expDate = new Date(expDateStr[1]);
+            if (currentDate && expDate < currentDate) {
+                alert("Termin waznosci minal! Prosze zeskanowac kod z kartonika!");
+            }
         }
     }
 }
 
 
 
-    // Закрываем текущее изображение и комментарий при нажатии на другую ссылку или на поле поиска
+    // Çŕęđűâŕĺě ňĺęóůĺĺ čçîáđŕćĺíčĺ č ęîěěĺíňŕđčé ďđč íŕćŕňčč íŕ äđóăóţ ńńűëęó čëč íŕ ďîëĺ ďîčńęŕ
     var searchInput = document.getElementById('searchInput');
     searchInput.addEventListener('focus', function() {
         if (currentImageId !== null) {
             var currentImage = document.getElementById(currentImageId);
-            currentImage.classList.add('hidden'); // Скрываем текущее изображение
+            currentImage.classList.add('hidden'); // Ńęđűâŕĺě ňĺęóůĺĺ čçîáđŕćĺíčĺ
             var currentComment = document.getElementById('comment' + currentImageId.replace('image', ''));
-            currentComment.classList.add('hidden'); // Скрываем текущий комментарий
-            currentImageId = null; // Сбрасываем ID текущего изображения
+            currentComment.classList.add('hidden'); // Ńęđűâŕĺě ňĺęóůčé ęîěěĺíňŕđčé
+            currentImageId = null; // Ńáđŕńűâŕĺě ID ňĺęóůĺăî čçîáđŕćĺíč˙
         }
         this.select();
     });
