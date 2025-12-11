@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RCHP v.2025.12.11.184140</title>
+<title>RCHP v.2025.12.11.192859</title>
 <script src="https://viitaliigithub.github.io/HTML/JsBarcode.all.min.js"></script>
 <style>
     body, ul, li {
@@ -43,7 +43,7 @@
 
 <!-- Ñòðàíèöà 1 -->
 <div class="page" id="page1">
-    <p style="text-align: center;">RCHP v.2025.12.11.184140</p>
+    <p style="text-align: center;">RCHP v.2025.12.11.192859</p>
     <p>Enter Password:</p>
     <input type="password" id="passwordInput">
     <button id="loginButton" onclick="checkPassword()">Enter</button>
@@ -52,7 +52,7 @@
 
 <!-- Ñòðàíèöà 2 -->
 <div class="page" id="page2">
-    <p style="text-align: center;">RCHP v.2025.12.11.184140</p>
+    <p style="text-align: center;">RCHP v.2025.12.11.192859</p>
     <input type="text" id="searchInput" placeholder="">
     <ul id="linkList">
 <li><a href="#" onclick="showImage(event, 'image260623', '0105907377306139151120261025328503')">260623 BULKA PORANNA 65 G</a><div id="comment260623" class="hidden" style="color: #ff0000;">Exp. date: 30.11.2026</div><img id="image260623" class="hidden" src=""></li>
@@ -181,15 +181,17 @@ function showImage(event, imageId, barcodeData) {
 
     // Ïðîâåðêà íà ñðîê äåéñòâèÿ
     if (commentDiv.textContent.includes('Exp. date:')) {
-        var expDateStr = commentDiv.textContent.match(/Exp\. date:\s*(\d{4}\.\d{2}\.\d{2})/);
+
+        // Èùåì äàòó ôîðìàòà dd.mm.yyyy
+        var expDateStr = commentDiv.textContent.match(/Exp\. date:\s*(\d{2}\.\d{2}\.\d{4})/);
+
         if (expDateStr) {
-            var expDateParts = expDateStr[1].split('.'); // Ðàçäåëÿåì ñòðîêó äàòû
-            var expDate = new Date(expDateParts[0], expDateParts[1] - 1, expDateParts[2]); // Ó÷èòûâàåì ìåñÿöû
-            var currentDate = new Date(); // Òåêóùàÿ äàòà
+            var expParts = expDateStr[1].split('.'); // dd.mm.yyyy
+            var expDate = new Date(expParts[2], expParts[1] - 1, expParts[0]); 
+            var currentDate = new Date();
 
-            console.log('Äàòà èñòå÷åíèÿ:', expDate, 'Òåêóùàÿ äàòà:', currentDate); // Îòëàäêà
+            console.log("Äàòà èñòå÷åíèÿ:", expDate, "Òåêóùàÿ äàòà:", currentDate);
 
-            // Ñðàâíèâàåì äàòû
             if (expDate < currentDate) {
                 alert("Termin waznosci minal! Prosze zeskanowac kod z kartonika!");
             }
