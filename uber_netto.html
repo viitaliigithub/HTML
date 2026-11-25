@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Uber Drive — Брутто / Нетто</title>
+<style>
+*{box-sizing:border-box}body{font-family:Arial,system-ui,sans-serif;background:#f5f6f7;color:#171717;margin:0;padding:16px;max-width:760px;margin:auto}
+h1{font-size:25px}.panel{background:white;border:1px solid #ddd;border-radius:14px;padding:16px;margin:14px 0}
+label{display:block;font-weight:600;margin:12px 0 6px}input{font:inherit}input[type=file],input[type=number]{width:100%}input[type=number]{padding:11px;border:1px solid #bbb;border-radius:9px;font-size:17px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}button{padding:12px 15px;border:0;border-radius:9px;background:#111;color:white;font-size:16px;font-weight:bold;margin:10px 8px 0 0}.secondary{background:#e7e7e7;color:#111}
+#preview{display:none;max-width:100%;max-height:300px;margin-top:10px}#status{font-size:14px;color:#555;margin-top:10px;min-height:20px}
+.result{background:#171717;color:white;border-radius:14px;padding:16px}.big{font-size:32px;font-weight:bold}.line{display:flex;justify-content:space-between;margin:9px 0;gap:10px}.muted,.note{color:#666;font-size:14px;line-height:1.45}.result .muted{color:#ccc}
+textarea{width:100%;min-height:130px;font:13px monospace;padding:8px}
+.transport{background:#f1f3f5;border-radius:12px;padding:13px;min-width:0}
+.transport .value{font-size:22px;font-weight:800;overflow-wrap:anywhere}
+</style>
+</head>
+<body>
+<h1>Uber Drive — Брутто / Нетто</h1>
+<section class="panel">
+<label>Скриншот</label><input id="file" type="file" accept="image/*">
+<img id="preview" alt="Попередній перегляд">
+<div id="status">Вибери скриншот.</div>
+<details><summary>Текст, який розпізнала програма</summary><textarea id="raw" readonly></textarea></details>
+</section>
+<section class="panel">
+<div class="grid">
+<div><label>Години</label><input id="onlineHours" type="number" min="0" step="1" value="0"></div>
+<div><label>Хвилини</label><input id="onlineMinutes" type="number" min="0" max="59" step="1" value="0"></div>
+</div>
+<div class="grid">
+<div><label>Тариф без податків і зборів (PLN)</label><input id="tariff" type="number" step=".01" value="0"></div>
+<div><label>Промоакції (PLN)</label><input id="promo" type="number" step=".01" value="0"></div>
+<div><label>Чаєві (PLN)</label><input id="tips" type="number" step=".01" value="0"></div>
+<div><label>Утримання (%)</label><input id="rate" type="number" step=".01" value="28"></div>
+</div>
+
+<p class="note">Формула: Тариф + Промоакції - % утримання + Чаєві.</p>
+</section>
+<section class="result">
+<div class="muted">Нетто</div><div class="big" id="net">0,00 PLN</div>
+<div class="line"><span>Тариф + промоакції</span><b id="sum">0,00 PLN</b></div>
+<div class="line"><span>Утримання</span><b id="tax">0,00 PLN</b></div>
+<div class="line"><span>Чаєві</span><b id="tipout">0,00 PLN</b></div>
+</section>
+
+<section class="panel">
+<h2 style="margin:0 0 6px">Витрати на паливо</h2>
+<p class="note">Вкажи пробіг і ціну пального. Витрата для кожного транспорту редагується окремо.</p>
+<div class="grid">
+<div><label>Пробіг (км)</label><input id="distance" type="number" min="0" step="1" value="0"></div>
+<div><label>Ціна пального (PLN/л)</label><input id="fuelPrice" type="number" min="0" step=".01" value="5.9"></div>
+<div><label>Мотоцикл — л/100 км</label><input id="motoConsumption" type="number" min="0" step=".1" value="3"></div>
+<div><label>Автомобіль — л/100 км</label><input id="carConsumption" type="number" min="0" step=".1" value="10"></div>
+</div>
+<div class="grid" style="margin-top:14px">
+<div style="background:#f1f3f5;border-radius:12px;padding:13px">
+<div style="font-weight:700">Мотоцикл</div>
+<div class="muted">Витрачено пального</div><div id="motoLitres" style="font-size:20px;font-weight:700">0,00 л</div>
+<div class="muted">Вартість пального</div><div id="motoCost" style="font-size:20px;font-weight:700">0,00 PLN</div>
+<div class="muted">Нетто після пального</div><div id="motoFinal" style="font-size:23px;font-weight:800">0,00 PLN</div>
+<div class="muted" style="margin-top:8px">Нетто після пального за годину</div><div id="motoHourly" style="font-size:22px;font-weight:800">— PLN/год</div>
+</div>
+<div style="background:#f1f3f5;border-radius:12px;padding:13px">
+<div style="font-weight:700">Автомобіль</div>
+<div class="muted">Витрачено пального</div><div id="carLitres" style="font-size:20px;font-weight:700">0,00 л</div>
+<div class="muted">Вартість пального</div><div id="carCost" style="font-size:20px;font-weight:700">0,00 PLN</div>
+<div class="muted">Нетто після пального</div><div id="carFinal" style="font-size:23px;font-weight:800">0,00 PLN</div>
+<div class="muted" style="margin-top:8px">Нетто після пального за годину</div><div id="carHourly" style="font-size:22px;font-weight:800">— PLN/год</div>
+</div>
+</div>
+</section>
+
+<section class="panel">
+<h2 style="margin:0 0 6px">Час роботи</h2>
+<div class="muted">Загальний час онлайн: <b id="onlineTotal" style="color:#171717">0 год 00 хв</b></div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+<script>
+const el=id=>document.getElementById(id);
+const fmt=n=>Number(n||0).toLocaleString('pl-PL',{minimumFractionDigits:2,maximumFractionDigits:2})+' PLN';
+function calculate(){
+ const t=Number(el('tariff').value)||0,p=Number(el('promo').value)||0,tip=Number(el('tips').value)||0,r=Number(el('rate').value)||0;
+ const base=t+p,cut=base*r/100,net=base-cut+tip;
+ el('sum').textContent=fmt(base);el('tax').textContent='−'+fmt(cut);el('tipout').textContent=fmt(tip);el('net').textContent=fmt(net);
+
+ const km=Math.max(0,Number(el('distance').value)||0),price=Math.max(0,Number(el('fuelPrice').value)||0);
+ const mc=Math.max(0,Number(el('motoConsumption').value)||0),cc=Math.max(0,Number(el('carConsumption').value)||0);
+ const ml=km*mc/100,cl=km*cc/100,mcost=ml*price,ccost=cl*price;
+ const motoNet=net-mcost,carNet=net-ccost;
+ el('motoLitres').textContent=ml.toLocaleString('pl-PL',{minimumFractionDigits:2,maximumFractionDigits:2})+' л';
+ el('carLitres').textContent=cl.toLocaleString('pl-PL',{minimumFractionDigits:2,maximumFractionDigits:2})+' л';
+ el('motoCost').textContent=fmt(mcost);el('carCost').textContent=fmt(ccost);
+ el('motoFinal').textContent=fmt(motoNet);el('carFinal').textContent=fmt(carNet);
+
+ const hours=Math.max(0,Number(el('onlineHours').value)||0);
+ const minutes=Math.max(0,Number(el('onlineMinutes').value)||0);
+ const totalHours=hours+minutes/60;
+ el('onlineTotal').textContent=hours+' год '+String(Math.floor(minutes)).padStart(2,'0')+' хв';
+ el('motoHourly').textContent=totalHours>0?fmt(motoNet/totalHours)+'/год':'— PLN/год';
+ el('carHourly').textContent=totalHours>0?fmt(carNet/totalHours)+'/год':'— PLN/год';
+}
+['tariff','promo','tips','rate','distance','fuelPrice','motoConsumption','carConsumption','onlineHours','onlineMinutes'].forEach(id=>el(id).addEventListener('input',calculate));
+
+function numberFrom(s){
+ const matches=s.match(/-?\d[\d\s.,]*\d|-?\d/g)||[];
+ for(let token of matches){
+  token=token.replace(/\s/g,'');
+  if(token.includes(',')&&token.includes('.')) token=token.replace(/\./g,'').replace(',','.');
+  else token=token.replace(',','.');
+  const n=Number(token);
+  if(Number.isFinite(n)&&/[.,]\d{2}$/.test(token))return n;
+ }
+ return null;
+}
+function findValue(text,labelRegex){
+ const lines=text.split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
+ for(let i=0;i<lines.length;i++){
+  if(labelRegex.test(lines[i])){
+   for(const j of [i,i+1,i-1]){
+    if(j>=0&&j<lines.length){const n=numberFrom(lines[j]);if(n!==null)return n;}
+   }
+  }
+ }
+ const flat=text.replace(/\s+/g,' ');
+ const m=labelRegex.exec(flat);
+ if(m){const n=numberFrom(flat.slice(m.index,m.index+150));if(n!==null)return n;}
+ return null;
+}
+function findOnlineTime(text){
+ // Uber weekly statistics cannot realistically exceed 168 online hours.
+ // OCR sometimes reads the Cyrillic unit 'ч.' as the digit '4', e.g. '53ч.' -> '534.'.
+ const cleanHours=n=>{
+   if(n>168 && n<=999){const shortened=Math.floor(n/10);if(shortened<=168)return shortened;}
+   return n;
+ };
+ // Normalize common OCR substitutions and whitespace.
+ const norm=s=>s.toLowerCase()
+   .replace(/[|]/g,' ')
+   .replace(/[і]/g,'и')
+   .replace(/\bчас(?:а|ов)?\b/g,'ч')
+   .replace(/\bмин(?:ут(?:ы)?)?\b/g,'м')
+   .replace(/\bсек(?:унд(?:ы)?)?\b/g,'с')
+   .replace(/\s+/g,' ');
+ const full=norm(text);
+ const labelMatch=full.match(/в\s*сет[иіи]|b\s*ce[тt][иu]/i);
+ const regions=[];
+ if(labelMatch) regions.push(full.slice(labelMatch.index, labelMatch.index+260));
+ regions.push(full);
+
+ const hourRe=/(\d{1,3})\s*(?:ч\.?|h(?:r|rs|ours?)?)\s*[,.:;]?\s*(\d{1,2})\s*(?:м\.?|m(?:in(?:s|utes?)?)?)/i;
+ const minSecRe=/(\d{1,3})\s*(?:м\.?|m(?:in(?:s|utes?)?)?)\s*[,.:;]?\s*(\d{1,2})\s*(?:с\.?|s(?:ec(?:s|onds?)?)?)/i;
+ for(const region of regions){
+   let m=region.match(hourRe);
+   if(m)return {hours:cleanHours(Number(m[1])),minutes:Number(m[2])};
+   m=region.match(minSecRe);
+   if(m)return {hours:0,minutes:Number(m[1])};
+ }
+ // OCR may confuse Cyrillic unit letters or omit punctuation: tolerate "53 ч 24 м", "53ч24м".
+ const loose=full.match(/(\d{1,3})\s*[чh]\s*(\d{1,2})\s*[мm]/i);
+ if(loose)return {hours:cleanHours(Number(loose[1])),minutes:Number(loose[2])};
+
+ // Last resort: on Uber's "В сети" line the two numbers immediately following
+ // the label are hours and minutes, even if OCR dropped the unit abbreviations.
+ if(labelMatch){
+   const tail=full.slice(labelMatch.index,labelMatch.index+180);
+   const nums=[...tail.matchAll(/\b\d{1,3}\b/g)].map(x=>Number(x[0]));
+   if(nums.length>=2 && nums[0]<=999 && nums[1]<60)
+     return {hours:cleanHours(nums[0]),minutes:nums[1]};
+ }
+ return null;
+}
+
+let ocrBusy=false;
+async function recognizeScreenshot(){
+ const f=el('file').files[0];if(!f)return;
+ if(ocrBusy)return;
+ if(!window.Tesseract){el('status').textContent='OCR не завантажився. Перевір інтернет і спробуй вибрати скриншот ще раз.';return;}
+ ocrBusy=true;
+ try{
+  el('status').textContent='Завантажую модель розпізнавання…';
+  const worker=await Tesseract.createWorker('rus+eng',1,{logger:m=>{
+   if(m.status)el('status').textContent=m.status+(m.progress!==undefined?' '+Math.round(m.progress*100)+'%':'');
+  }});
+  el('status').textContent='Обробляю скриншот…';
+  const result=await worker.recognize(f);
+  const text=result.data.text||'';el('raw').value=text;
+  // Re-run OCR on the upper part of the screenshot, where Uber displays "В сети".
+  // A focused crop prevents the lower financial rows from confusing time recognition.
+  let timeText='';
+  try{
+   const image=new Image(),objectUrl=URL.createObjectURL(f);
+   await new Promise((resolve,reject)=>{image.onload=resolve;image.onerror=reject;image.src=objectUrl;});
+   const canvas=document.createElement('canvas'),ctx=canvas.getContext('2d');
+   const cropY=Math.round(image.height*.13),cropH=Math.round(image.height*.19);
+   canvas.width=image.width;canvas.height=cropH;
+   ctx.drawImage(image,0,cropY,image.width,cropH,0,0,canvas.width,canvas.height);
+   const timeResult=await worker.recognize(canvas);
+   timeText=timeResult.data.text||'';
+   URL.revokeObjectURL(objectUrl);
+  }catch(cropError){timeText='';}
+  await worker.terminate();
+  const tariff=findValue(text,/тариф.{0,60}без налогов|тариф.{0,60}без налог|тариф без/i);
+  const promo=findValue(text,/промоакц|промо/i);
+  const tips=findValue(text,/чаев|чаевые|чаєв|tips/i);
+  const online=findOnlineTime(timeText+'\n'+text);
+  el('tariff').value=(tariff===null?0:tariff).toFixed(2);
+  el('promo').value=(promo===null?0:promo).toFixed(2);
+  el('tips').value=(tips===null?0:tips).toFixed(2);
+  if(online){el('onlineHours').value=online.hours;el('onlineMinutes').value=online.minutes;}
+  else{el('onlineHours').value=0;el('onlineMinutes').value=0;}
+  calculate();
+  el('status').textContent='Розпізнавання завершено. '+(tariff===null?'Не знайдено тариф. ':'')+(promo===null?'Не знайдено промоакції. ':'')+(tips===null?'Чаєві не знайдено — встановлено 0. ':'')+(online===null?'Час «В сети» не знайдено — встановлено 0. ':'')+'Перевір суми та час.';
+ }catch(e){el('status').textContent='Помилка OCR: '+(e.message||String(e));}
+ finally{ocrBusy=false;}
+}
+el('file').onchange=e=>{
+ const f=e.target.files[0];
+ if(!f)return;
+ if(el('preview').dataset.url)URL.revokeObjectURL(el('preview').dataset.url);
+ const url=URL.createObjectURL(f);
+ el('preview').src=url;el('preview').dataset.url=url;el('preview').style.display='block';
+ el('status').textContent='Скриншот завантажено. Починаю розпізнавання…';
+ recognizeScreenshot();
+};
+calculate();
+</script>
+</body></html>
